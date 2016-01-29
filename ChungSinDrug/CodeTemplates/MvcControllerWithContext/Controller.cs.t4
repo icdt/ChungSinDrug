@@ -44,6 +44,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using icdtFramework.Extensions;
+using icdtFramework.Helpers;
 <# foreach (var namespaceName in RequiredNamespaces) { #>
 using <#= namespaceName #>;
 <# } #>
@@ -74,10 +76,21 @@ namespace <#= Namespace #>
 #>
     public class <#= ControllerName #> : Controller
     {
+
+		private int pageSize = 10;
+
         public ActionResult Index()
         {
 		    var returnList = <#= ModelTypeName #>Manager.GetAll();
             return View(returnList);
+        } 
+
+		public ActionResult Index(int page=1)
+        {
+            int currentPage = page < 1 ? 1 : page;
+            var itemList = <#= ModelTypeName #>Manager.GetPagedList(page, pageSize);
+            var itemModelList = itemList.ToMappedPagedList<<#= ModelTypeName #>, <#= ModelTypeName #>Model>();
+            return View(itemModelList);
         } 
 
         public ActionResult Create()

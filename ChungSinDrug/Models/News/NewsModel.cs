@@ -9,7 +9,7 @@ namespace ChungSinDrug.Models
 {
     public class NewsModel
     {
-        [HiddenInput]
+        [HiddenInput(DisplayValue =false)]
         public string News_Id { get; set; }
 
         [Display(Name = "標題")]
@@ -37,14 +37,25 @@ namespace ChungSinDrug.Models
         [Display(Name = "是否置頂")]
         public bool News_IsTop { get; set; }
         
+        [ScaffoldColumn(true)]
         public DateTime News_CreateTime { get; set; }
+
+        [ScaffoldColumn(false)]
         public string News_CreatorId { get; set; }
+
+        [ScaffoldColumn(false)]
         public string News_CreatorUserName { get; set; }
 
+        [ScaffoldColumn(false)]
         public DateTime News_UpdateTime { get; set; }
+
+        [ScaffoldColumn(false)]
         public string News_UpdaterId { get; set; }
+
+        [ScaffoldColumn(false)]
         public string News_UpdaterUserName { get; set; }
 
+        [ScaffoldColumn(false)]
         public bool News_DelLock { get; set; }
 
         public NewsModel()
