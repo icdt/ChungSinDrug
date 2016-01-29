@@ -53,8 +53,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="PagedList.Mvc, Version=4.4.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\PagedList.Mvc.4.4.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -187,11 +191,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="icdtFramework\Extensions\MappingExtensions.cs" />
+    <Compile Include="icdtFramework\Helpers\AESHelper.cs" />
+    <Compile Include="icdtFramework\Helpers\CloneObjectHelper.cs" />
+    <Compile Include="icdtFramework\Helpers\DateTimeHelper.cs" />
+    <Compile Include="icdtFramework\Helpers\FileHelper.cs" />
+    <Compile Include="icdtFramework\Helpers\ImageHelper.cs" />
+    <Compile Include="icdtFramework\Helpers\MetaDataHelper.cs" />
+    <Compile Include="icdtFramework\Helpers\RandHelper.cs" />
     <Compile Include="Migrations\201601290716167_InitialDB.cs" />
     <Compile Include="Migrations\201601290716167_InitialDB.Designer.cs">
       <DependentUpon>201601290716167_InitialDB.cs</DependentUpon>
@@ -279,6 +289,7 @@
     <Content Include="CodeTemplates\PackageVersions5.2.3.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -327,11 +338,6 @@
     <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Uploadify.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\UploadifyMulti.cshtml" />
-    <Content Include="Views\News\Create.cshtml" />
-    <Content Include="Views\News\Delete.cshtml" />
-    <Content Include="Views\News\Details.cshtml" />
-    <Content Include="Views\News\Edit.cshtml" />
-    <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\roslyn\" />
@@ -350,7 +356,6 @@
     <Folder Include="CodeTemplates\MvcView\" />
     <Folder Include="CodeTemplates\ODataControllerWithActions\" />
     <Folder Include="CodeTemplates\ODataControllerWithContext\" />
-    <Folder Include="icdtFramework\Helpers\" />
     <Folder Include="icdtFramework\Plugins\datepicker\images\" />
     <Folder Include="icdtFramework\Plugins\datepicker\uitimepicker\" />
   </ItemGroup>
