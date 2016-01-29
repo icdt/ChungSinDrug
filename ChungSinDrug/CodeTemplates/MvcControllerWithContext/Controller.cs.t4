@@ -76,60 +76,55 @@ namespace <#= Namespace #>
     {
         public ActionResult Index()
         {
-            return View(<#= ModelTypeName #> .GetAll());
+		    var returnList = <#= ModelTypeName #>Manager.GetAll();
+            return View(returnList);
         } 
 
         public ActionResult Create()
         {
-            return View(new <#= ModelTypeName #>Model());
+		    var newItem = new <#= ModelTypeName #>Model();
+            return View(newItem);
         }
 
-<# if (IsOverpostingProtectionRequired) {
-    foreach (var line in OverpostingWarningMessage.Split(new string[] { Environment.NewLine }, StringSplitOptions.None)) { 
-#>
-        // <#= line #>
-<# } } #>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(<#= bindAttribute #><#= ModelTypeName #>Model <#= ModelVariable #>Model)
+        public ActionResult Create(<#= ModelTypeName #>Model <#= ModelVariable #>Model)
         {
             if (ModelState.IsValid)
             {
 				try
 				{
-					<#= ModelTypeName #> <#= ModelVariable #> = ModelToDomain(id);
+					<#= ModelTypeName #> <#= ModelVariable #> = this.ModelToDomain(<#= ModelVariable #>Model);
 					<#= ModelTypeName #>Manager.Create(<#= ModelVariable #>);
-					ViewBag.IsFinish = "";
+					TempData["SaveOk"] = true;
 				}
-				catche(Exception)
+				catch(Exception)
 				{
+				    TempData["SaveOk"]  = false;
 				}
 			}
 
-            return View(<#= ModelVariable #>);
+            return View(<#= ModelVariable #>Model);
         }
-
 
         public ActionResult Edit(<#= primaryKeyNullableTypeName #> id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                TempData["EditItemNotFound"] = true;
+                return RedirectToAction("Index");
             }
-			<#= ModelTypeName #> <#= ModelTypeName #>Manager = <#= ModelTypeName #>Manager.GetById(id);
-			var <#= ModelTypeName #>ModelObj = <#= ModelTypeName #>Manager.DomainToModel(<#= ModelTypeName #>Manager);
-            if (<#= ModelTypeName #>ModelObj  == null)
+			<#= ModelTypeName #> theItem = <#= ModelTypeName #>Manager.Get(id);
+			if (theItem  == null)
             {
-                return HttpNotFound();
+			    TempData["EditItemNotFound"] = true;
+                return RedirectToAction("Index");
             }
-            return View(<#= ModelTypeName #>ModelObj );
+			var theItemModel = this.DomainToModel(theItem);
+           
+            return View(theItemModel);
         }
 
-<# if (IsOverpostingProtectionRequired) {
-    foreach (var line in OverpostingWarningMessage.Split(new string[] { Environment.NewLine }, StringSplitOptions.None)) { 
-#>
-        // <#= line #>
-<# } } #>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(<#= ModelTypeName #>Model <#= ModelVariable #>Model)
@@ -138,63 +133,57 @@ namespace <#= Namespace #>
             {
 				try
 				{
-					<#= ModelTypeName #> <#= ModelTypeName #>Obj = ModelToDomain(<#= ModelVariable #>);
+					<#= ModelTypeName #> <#= ModelVariable #>Item = this.ModelToDomain(<#= ModelVariable #>Model);
 
-		     		<#= ModelTypeName #>Manager.Update(<#= ModelTypeName #>Obj);
-					 ViewBag.IsFinish = "";
+		     		<#= ModelTypeName #>Manager.Update(<#= ModelVariable #>Item);
+					 TempData["SaveOk"]  = true;
 				}
-				catche(Exection)
+				catch(Exception)
 				{
-					 ViewBag.IsFinish = "";
+					TempData["SaveOk"] = false;
 				}
 		    }
-            return View(<#= ModelVariable #>);
+            return View(<#= ModelVariable #>Model);
         }
 
-        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(<#= primaryKeyShortTypeName #> id)
         {
 			try
 			{
-			  <#= ModelTypeName #>  <#= ModelTypeName #>Obj = <#= ModelTypeName #>Manager.GetById(id);
-			  <#= ModelTypeName #>Manager.Remove(<#= ModelTypeName #>Obj);
+			  <#= ModelTypeName #>  <#= ModelVariable #>Item = <#= ModelTypeName #>Manager.Get(id);
+			  if(<#= ModelVariable #>Item == null)
+			  {
+			    TempData["SaveOk"] = false;
+				return RedirectToAction("Index");
+			  }
+			  <#= ModelTypeName #>Manager.Remove(<#= ModelVariable #>Item);
+			  TempData["SaveOk"] = true;
 			}
-			catche(Exception)
+			catch(Exception)
 			{
+			   TempData["SaveOk"] = false;
 			}
 		 
 			return RedirectToAction("Index");
 		}
 
-
 		private <#= ModelTypeName #> ModelToDomain(<#= ModelTypeName #>Model viewModel)
 		{
 		    <#= ModelTypeName #> <#= ModelVariable #> = new <#= ModelTypeName #>();
-            Mapper.CreateMap<<#= ModelTypeName #>Model, <#= ModelTypeName #>>();
-            <#= ModelTypeName #> = Mapper.Map<<#= ModelTypeName #>Model, <#= ModelTypeName #>>(viewModel);
+            <#= ModelVariable #> = Mapper.Map<<#= ModelTypeName #>Model, <#= ModelTypeName #>>(viewModel);
 
             return <#= ModelVariable #>;
 		}
 
-		private <#= ModelTypeName #> DomainToModel(<#= ModelTypeName #> <#= ModelVariable #>)
+		private <#= ModelTypeName #>Model DomainToModel(<#= ModelTypeName #> <#= ModelVariable #>)
 		{
 		  <#= ModelTypeName #>Model viewModel = new <#= ModelTypeName #>Model();
-            Mapper.CreateMap<<#= ModelTypeName #>, <#= ModelTypeName #>Model>();
             viewModel = Mapper.Map<<#= ModelTypeName #>, <#= ModelTypeName #>Model>(<#= ModelVariable #>);
 
             return viewModel;
 		}
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
 <#+
