@@ -1,8 +1,6 @@
-﻿using PagedList;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace ChungSinDrug.Models
 {
@@ -36,14 +34,14 @@ namespace ChungSinDrug.Models
         }
 
         //分頁
-        public static IPagedList<News> GetPagedList(int pageNumber, int pageSize)
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                return db.News.OrderByDescending(a => a.News_CreateTime).ToPagedList(pageNumber, pageSize);
+        //public static IPagedList<News> GetPagedList(int pageNumber, int pageSize)
+        //{
+        //    using (ApplicationDbContext db = new ApplicationDbContext())
+        //    {
+        //        return db.News.OrderByDescending(a => a.News_CreateTime).ToPagedList(pageNumber, pageSize);
 
-            }
-        }
+        //    }
+        //}
 
         //透過Id取得記錄
         public static News Get(string id)

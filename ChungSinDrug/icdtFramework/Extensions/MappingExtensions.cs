@@ -17,13 +17,13 @@ namespace ChungSinDrug.icdtFramework.Extensions
         /// <typeparam name="TDestination"></typeparam>
         /// <param name="list"></param>
         /// <returns></returns>
-        public static IPagedList<TDestination> ToMappedPagedList<TSource, TDestination>(this IPagedList<TSource> list)
-        {
-            IEnumerable<TDestination> sourceList = Mapper.Map<IEnumerable<TSource>, IEnumerable<TDestination>>(list);
-            IPagedList<TDestination> pagedResult = new StaticPagedList<TDestination>(sourceList, list.GetMetaData());
-            return pagedResult;
+        //public static IPagedList<TDestination> ToMappedPagedList<TSource, TDestination>(this IPagedList<TSource> list)
+        //{
+        //    IEnumerable<TDestination> sourceList = Mapper.Map<IEnumerable<TSource>, IEnumerable<TDestination>>(list);
+        //    IPagedList<TDestination> pagedResult = new StaticPagedList<TDestination>(sourceList, list.GetMetaData());
+        //    return pagedResult;
 
-        }
+        //}
 
     }
 }
