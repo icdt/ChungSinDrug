@@ -25,7 +25,6 @@ namespace ChungSinDrug.Controllers
             return View(newItem);
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(NewsModel newsModel)
@@ -47,7 +46,6 @@ namespace ChungSinDrug.Controllers
             return View(newsModel);
         }
 
-
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -65,7 +63,6 @@ namespace ChungSinDrug.Controllers
            
             return View(theItemModel);
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -88,7 +85,6 @@ namespace ChungSinDrug.Controllers
             return View(newsModel);
         }
 
-        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
@@ -111,7 +107,6 @@ namespace ChungSinDrug.Controllers
 		 
 			return RedirectToAction("Index");
 		}
-
 
 		private News ModelToDomain(NewsModel viewModel)
 		{

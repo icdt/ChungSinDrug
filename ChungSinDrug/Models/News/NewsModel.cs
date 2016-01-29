@@ -16,14 +16,12 @@ namespace ChungSinDrug.Models
         public string News_Title { get; set; }
 
         [Display(Name = "開始時間")]
-        [DataType(DataType.DateTime)]
         [UIHint("DatePicker")]
-        public DateTime News_StartTime { get; set; }
+        public string News_StartTime { get; set; }
 
         [Display(Name = "結束時間")]
-        [DataType(DataType.DateTime)]
         [UIHint("DatePicker")]
-        public DateTime News_EndTime { get; set; }
+        public string News_EndTime { get; set; }
 
         [AllowHtml]
         [Display(Name = "內文")]
@@ -53,8 +51,8 @@ namespace ChungSinDrug.Models
         {
             this.News_Id = Guid.NewGuid().ToString();
             this.News_Title = "";
-            this.News_StartTime = DateTime.Now;
-            this.News_EndTime = DateTime.Now;
+            this.News_StartTime = DateTime.Now.ToString("yyyy-MM-dd");
+            this.News_EndTime = DateTime.Now.ToString("yyyy-MM-dd");
             this.News_Content = "";
             this.News_CoverImage = "";
             this.News_IsPublish = true;
