@@ -210,6 +210,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="icdtFramework\Plugins\datepicker\dialogUI.js" />
+    <Content Include="icdtFramework\Plugins\datepicker\dislog.css" />
+    <Content Include="icdtFramework\Plugins\datepicker\jquery.js" />
+    <Content Include="icdtFramework\Plugins\datepicker\jquery.ui.datepicker-zh-TW.js" />
+    <Content Include="icdtFramework\Plugins\uploadify\jquery.uploadify-3.1.js" />
+    <Content Include="icdtFramework\Plugins\uploadify\jquery.uploadify-3.1.min.js" />
+    <Content Include="icdtFramework\Plugins\uploadify\license.txt" />
+    <Content Include="icdtFramework\Plugins\uploadify\img\uploadify-cancel.png" />
+    <Content Include="icdtFramework\Plugins\uploadify\uploadify.css" />
+    <Content Include="icdtFramework\Plugins\uploadify\uploadify.swf" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -240,6 +250,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Uploadify.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\UploadifyMulti.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CodeTemplates\ApiControllerEmpty\" />
@@ -257,7 +270,8 @@
     <Folder Include="CodeTemplates\ODataControllerWithActions\" />
     <Folder Include="CodeTemplates\ODataControllerWithContext\" />
     <Folder Include="icdtFramework\Helpers\" />
-    <Folder Include="icdtFramework\Plugins\" />
+    <Folder Include="icdtFramework\Plugins\datepicker\images\" />
+    <Folder Include="icdtFramework\Plugins\datepicker\uitimepicker\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,0 +1,29 @@
+﻿@{
+    var htmlfieldprefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var formattedmodelvalue = ViewData.TemplateInfo.FormattedModelValue;
+}
+<script type="text/javascript">
+    $(function () {
+        $("#uploadify_" + "@htmlfieldprefix").uploadify({
+            width: 120,
+            height: 30,
+            multi: false,
+            swf: '/icdtFramework/Plugins/uploadify/uploadify.swf',
+            uploader: '@Url.Action("UploadImage","Base")',
+            fileObjName: 'file',
+            onUploadSuccess : function(file, data, response) {
+                $('#imgbox_' + "@htmlfieldprefix").html('<img src="' + data + '" />');
+                $('#'+"@htmlfieldprefix").val(data);
+            }
+        });
+    });
+</script>
+
+<div id="imgbox_@(htmlfieldprefix)">
+    @if (!String.IsNullOrWhiteSpace(Convert.ToString(formattedmodelvalue)))
+    {
+        <img src="@formattedmodelvalue" />
+    }
+</div>
+<input type="file" name="file" id="uploadify_@(htmlfieldprefix)" />
+@Html.Hidden("", formattedmodelvalue)

@@ -26,6 +26,17 @@ namespace ChungSinDrug
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // datepicker
+            bundles.Add(new StyleBundle("~/Plugins/datepicker").Include(
+                      "~/icdtFramework/Plugins/datepicker/dislog.css",
+                      "~/icdtFramework/Plugins/datepicker/dialogUI.js",
+                      "~/icdtFramework/Plugins/datepicker/jquery.ui.datepicker-zh-TW.js"));
+
+            // uploadify
+            bundles.Add(new StyleBundle("~/Plugins/uploadify").Include(
+                      "~/icdtFramework/Plugins/uploadify/uploadify.css",
+                      "~/icdtFramework/Plugins/uploadify/jquery.uploadify-3.1.min.js"));
         }
     }
 }

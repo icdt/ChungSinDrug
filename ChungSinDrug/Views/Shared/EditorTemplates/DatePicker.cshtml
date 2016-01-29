@@ -1,0 +1,20 @@
+﻿@{ 
+    var htmlfieldprefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#" + '@htmlfieldprefix').datepicker({
+            minDate: '0',
+            dateFormat: "yy/mm/dd",
+            yearRange: "1911:2100",
+            firstDay: 1,
+            changeMonth: true,
+            changeYear: true,
+            onSelect: function (dateText, inst) {
+
+            }
+        });
+    });
+</script>
+
+@Html.TextBox("")
