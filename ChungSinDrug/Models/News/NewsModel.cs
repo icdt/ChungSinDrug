@@ -1,4 +1,5 @@
-﻿using System;
+﻿using icdtFramework.CustomViewTemplate;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace ChungSinDrug.Models
         [UIHint("DatePicker")]
         public string News_EndTime { get; set; }
 
+        [RichText]
         [AllowHtml]
         [Display(Name = "內文")]
         [DataType(DataType.Html)]

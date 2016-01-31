@@ -209,7 +209,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\mvc\HomeController.cs" />
+    <Compile Include="Controllers\mvc\NewsModelsController.cs" />
+    <Compile Include="Controllers\UploadFilesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,6 +223,7 @@
     <Compile Include="icdtFramework\Helpers\ImageHelper.cs" />
     <Compile Include="icdtFramework\Helpers\MetaDataHelper.cs" />
     <Compile Include="icdtFramework\Helpers\RandHelper.cs" />
+    <Compile Include="icdtFramework\Mvc\CustomModelAttribute.cs" />
     <Compile Include="Migrations\201601290716167_InitialDB.cs" />
     <Compile Include="Migrations\201601290716167_InitialDB.Designer.cs">
       <DependentUpon>201601290716167_InitialDB.cs</DependentUpon>
@@ -318,6 +321,11 @@
     <Content Include="Views\Shared\EditorTemplates\Uploadify.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\UploadifyMulti.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\NewsModels\Create.cshtml" />
+    <Content Include="Views\NewsModels\Delete.cshtml" />
+    <Content Include="Views\NewsModels\Details.cshtml" />
+    <Content Include="Views\NewsModels\Edit.cshtml" />
+    <Content Include="Views\NewsModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CodeTemplates\ApiControllerEmpty\" />
@@ -332,6 +340,7 @@
     <Folder Include="CodeTemplates\MvcViewWithoutModel\" />
     <Folder Include="CodeTemplates\ODataControllerWithActions\" />
     <Folder Include="CodeTemplates\ODataControllerWithContext\" />
+    <Folder Include="Controllers\api\" />
     <Folder Include="icdtFramework\Plugins\datepicker\images\" />
     <Folder Include="icdtFramework\Plugins\datepicker\uitimepicker\" />
   </ItemGroup>

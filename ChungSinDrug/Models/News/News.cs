@@ -1,4 +1,5 @@
-﻿using System;
+﻿using icdtFramework.CustomViewTemplate;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace ChungSinDrug.Models
         [DataType(DataType.DateTime)]
         public DateTime News_EndTime { get; set; }
 
+        [RichText]
         [Display(Name = "內文")]
         public string News_Content { get; set; }
 
