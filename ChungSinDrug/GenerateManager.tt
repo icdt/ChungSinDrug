@@ -10,6 +10,7 @@ string projectName = "ChungSinDrug";
 string modelName = "News";
 string modelVariable = "news";
 string modelDbSetName = "News";
+string savePath = "Models\\News\\NewssManager.cs";
 var project = GetProjectContainingFile("News.cs");
 var domainModels = GetClassesOf(project).ToList();	
 #>
@@ -158,20 +159,38 @@ namespace <#=projectName#>.Models
     }
 }
 <#
-SaveOutput(modelDbSetName+"Manager.cs");
+SaveOutput(savePath);
 #>
 
 <#@ import namespace="System.IO" #>
 <#+
   void SaveOutput(string outputFileName)
   {
-      string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+	  string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+	  CreatDirectory(templateDirectory,outputFileName);
       string outputFilePath = Path.Combine(templateDirectory, outputFileName);
       File.WriteAllText(outputFilePath, this.GenerationEnvironment.ToString()); 
 
       this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
   }
-#><#+
+#>
+<#+
+void CreatDirectory(string basePath,string outputFileName){
+	var arrayDirectory = outputFileName.Split(new char[]{'\\'});
+	var pathList = new List<string>();
+	for (int i = 0 ; i < arrayDirectory.Length - 1;i++)
+	{
+		pathList.Add(arrayDirectory[i]);
+		var path = basePath + "\\" + String.Join("\\",pathList.ToArray());
+		if(!Directory.Exists(path))
+		{
+			Directory.CreateDirectory(path);
+		}
+	}
+}
+#>
+
+<#+
 	public List<EnvDTE.ProjectItem> GetProjectItemsRecursively(EnvDTE.ProjectItems items)
 	{
 		var ret = new List<EnvDTE.ProjectItem>();
