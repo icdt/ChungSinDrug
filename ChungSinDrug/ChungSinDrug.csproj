@@ -236,6 +236,11 @@
     <Compile Include="Models\News\News.cs" />
     <Compile Include="Models\News\NewsManager.cs" />
     <Compile Include="Models\News\NewsModel.cs" />
+    <Compile Include="Models\TestModel\GenerateManager.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -267,6 +272,11 @@
     <Content Include="icdtFramework\Plugins\uploadify\img\uploadify-cancel.png" />
     <Content Include="icdtFramework\Plugins\uploadify\uploadify.css" />
     <Content Include="icdtFramework\Plugins\uploadify\uploadify.swf" />
+    <Content Include="Models\TestModel\GenerateManager.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GenerateManager.cs</LastGenOutput>
+      <LastOutputs>.\GenerateManager.cs</LastOutputs>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="CodeTemplates\MvcControllerWithContext\Controller.cs.t4" />
@@ -335,6 +345,9 @@
     <EmbeddedResource Include="Migrations\201601291212336_UpdateNewsModel.resx">
       <DependentUpon>201601291212336_UpdateNewsModel.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

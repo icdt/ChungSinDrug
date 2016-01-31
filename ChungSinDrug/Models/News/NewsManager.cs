@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace ChungSinDrug.Models
 {
-    public class NewsManager
+    public static class NewsManager
     {
         private static List<News> _NewsCache = new List<News>();
         private static object _newsQueueLock = new Object();

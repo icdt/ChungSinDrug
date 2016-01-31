@@ -1,0 +1,168 @@
+<#@ template language="C#" debug="True" #>
+<#@ output extension="cs" #>
+<#@ include file="T4Toolbox.tt" #>
+<#
+string projectName = "ChungSinDrug";
+string modelName = "News";
+string modelVariable = "news";
+string modelDbSetName = "News";
+#>
+using PagedList;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace <#=projectName#>.Models
+{
+    public static class <#=modelName#>Manager
+    {
+        private static List<<#=modelName#>> _<#=modelName#>Cache = new List<<#=modelName#>>();
+        private static object _<#=modelVariable#>QueueLock = new Object();
+
+        #region 初始化
+        //初始化
+        //public static void Initial()
+        //{
+        //    using (ApplicationDbContext db = new ApplicationDbContext())
+        //    {
+        //        var query = db.<#=modelDbSetName#>.AsQueryable();
+        //        query = query.Where(a => a.<#=modelName#>_DelLock == false);
+
+        //        _<#=modelName#>Cache = query.ToList();
+        //    }
+        //}
+        #endregion
+
+        #region 基本操作 (db & cache)
+        //取得所有記錄
+        public static List<<#=modelName#>> GetAll()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                return db.<#=modelDbSetName#>.Where(a => a.<#=modelName#>_DelLock == false).ToList();
+            }
+        }
+
+        //分頁
+        public static IPagedList<<#=modelName#>> GetPagedList(int pageNumber, int pageSize)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                return db.<#=modelDbSetName#>.OrderByDescending(a => a.<#=modelName#>_CreateTime).ToPagedList(pageNumber, pageSize);
+
+            }
+        }
+
+        //透過Id取得記錄
+        public static <#=modelName#> Get(string id)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                return db.<#=modelDbSetName#>.FirstOrDefault(a => a.<#=modelName#>_Id == id);
+            }
+        }
+
+        //新增單一記錄
+        public static void Create(<#=modelName#> <#=modelVariable#>)
+        {
+            Create(new List<<#=modelName#>>() { <#=modelVariable#> });
+        }
+
+        //新增多筆記錄
+        public static void Create(List<<#=modelName#>> <#=modelVariable#>s)
+        {
+            //更新資料庫
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                db.<#=modelDbSetName#>.AddRange(<#=modelVariable#>s);
+                db.SaveChanges();
+            }
+
+        }
+
+        //更新一筆記錄
+        public static void Update(<#=modelName#> <#=modelVariable#>s)
+        {
+            Update(new List<<#=modelName#>>() { <#=modelVariable#>s });
+        }
+
+        //更新多筆記錄
+        public static void Update(List<<#=modelName#>> <#=modelVariable#>s)
+        {
+            //更新資料庫
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var objIDs = <#=modelVariable#>s.Select(a => a.<#=modelName#>_Id).ToList();
+                var objInDB = db.<#=modelDbSetName#>.Where(a => objIDs.Contains(a.<#=modelName#>_Id)).ToList();
+
+                foreach (<#=modelName#> item in objInDB)
+                {
+                    var theNewFromOutside = <#=modelVariable#>s.FirstOrDefault(a => a.<#=modelName#>_Id == item.<#=modelName#>_Id);
+
+                    item.<#=modelName#>_CoverImage = theNewFromOutside.<#=modelName#>_CoverImage;
+                    item.<#=modelName#>_Title = theNewFromOutside.<#=modelName#>_Title;
+                    item.<#=modelName#>_Content = theNewFromOutside.<#=modelName#>_Content;
+                    item.<#=modelName#>_IsPublish = theNewFromOutside.<#=modelName#>_IsPublish;
+                    item.<#=modelName#>_IsTop = theNewFromOutside.<#=modelName#>_IsTop;
+
+                    item.<#=modelName#>_UpdateTime = theNewFromOutside.<#=modelName#>_UpdateTime;
+                    item.<#=modelName#>_UpdaterId = theNewFromOutside.<#=modelName#>_UpdaterId;
+                    item.<#=modelName#>_UpdaterUserName = theNewFromOutside.<#=modelName#>_UpdaterUserName;
+
+                }
+
+                lock (_<#=modelVariable#>QueueLock)
+                {
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        //刪除一筆記錄
+        public static void Remove(<#=modelName#> <#=modelVariable#>)
+        {
+            Remove(new List<<#=modelName#>>() { <#=modelVariable#> });
+        }
+
+        //刪除多筆記錄
+        public static void Remove(List<<#=modelName#>> <#=modelVariable#>s)
+        {
+            //更新資料庫
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var objIDs = <#=modelVariable#>s.Select(a => a.<#=modelName#>_Id).ToList();
+                var objInDB = db.<#=modelDbSetName#>.Where(a => objIDs.Contains(a.<#=modelName#>_Id)).ToList();
+
+                foreach (var item in objInDB)
+                {
+                    item.<#=modelName#>_DelLock = true;
+                }
+
+                lock (_<#=modelVariable#>QueueLock)
+                {
+                    db.SaveChanges();
+                }
+            }
+        }
+        #endregion
+
+        #region 進階查詢
+
+        #endregion
+    }
+}
+<#
+SaveOutput(modelDbSetName+"Manager.cs");
+#>
+
+<#@ import namespace="System.IO" #>
+<#+
+  void SaveOutput(string outputFileName)
+  {
+      string templateDirectory = Path.GetDirectoryName(Host.TemplateFile);
+      string outputFilePath = Path.Combine(templateDirectory, outputFileName);
+      File.WriteAllText(outputFilePath, this.GenerationEnvironment.ToString()); 
+
+      this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
+  }
+#>
