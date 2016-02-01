@@ -1,0 +1,112 @@
+﻿@model IPagedList<ChungSinDrug.Models.NewsModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.News_Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_StartTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_EndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_Content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_CoverImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_IsPublish)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_IsTop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_CreateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_CreatorId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_CreatorUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_UpdateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_UpdaterId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_UpdaterUserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.News_DelLock)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_CoverImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_IsPublish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_IsTop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_CreateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_CreatorId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_CreatorUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_UpdateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_UpdaterId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_UpdaterUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_DelLock)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.News_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.News_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.News_Id })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

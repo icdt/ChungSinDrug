@@ -79,12 +79,6 @@ namespace <#= Namespace #>
 
 		private int pageSize = 10;
 
-        public ActionResult Index()
-        {
-		    var returnList = <#= ModelTypeName #>Manager.GetAll();
-            return View(returnList);
-        } 
-
 		public ActionResult Index(int page=1)
         {
             int currentPage = page < 1 ? 1 : page;

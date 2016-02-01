@@ -19,10 +19,12 @@ namespace ChungSinDrug.Models
 
         [Display(Name = "開始時間")]
         [DataType(DataType.DateTime)]
+        [UIHint("DatePicker", null, "Width", 150, "Color", "red")]
         public DateTime News_StartTime { get; set; }
 
         [Display(Name = "結束時間")]
         [DataType(DataType.DateTime)]
+        [UIHint("DatePicker", null, "Width", 150, "Color", "red")]
         public DateTime News_EndTime { get; set; }
 
         [RichText]

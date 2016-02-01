@@ -24,6 +24,5 @@ namespace ChungSinDrug.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<ChungSinDrug.Models.NewsModel> NewsModels { get; set; }
     }
 }

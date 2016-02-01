@@ -17,11 +17,11 @@ namespace ChungSinDrug.Models
         public string News_Title { get; set; }
 
         [Display(Name = "開始時間")]
-        [UIHint("DatePicker")]
+        [UIHint("DatePicker", "", "Width", 150, "Color", "red")]
         public string News_StartTime { get; set; }
 
         [Display(Name = "結束時間")]
-        [UIHint("DatePicker")]
+        [UIHint("DatePicker", "", "Width", 150, "Color", "red")]
         public string News_EndTime { get; set; }
 
         [RichText]
