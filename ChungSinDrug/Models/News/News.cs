@@ -17,11 +17,13 @@ namespace ChungSinDrug.Models
 
         [Display(Name = "開始時間")]
         [DataType(DataType.DateTime)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [UIHint("DatePicker")]
         public DateTime News_StartTime { get; set; }
 
         [Display(Name = "結束時間")]
         [DataType(DataType.DateTime)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [UIHint("DatePicker")]
         public DateTime News_EndTime { get; set; }
 
@@ -45,9 +47,11 @@ namespace ChungSinDrug.Models
         [NotListShow]
         [NotEditable]
         public DateTime News_CreateTime { get; set; }
+
         [NotListShow]
         [NotFormShow]
         public string News_CreatorId { get; set; }
+
         [NotListShow]
         [NotEditable]
         public string News_CreatorUserName { get; set; }
@@ -55,9 +59,11 @@ namespace ChungSinDrug.Models
         [NotListShow]
         [NotEditable]
         public DateTime News_UpdateTime { get; set; }
+
         [NotListShow]
         [NotFormShow]
         public string News_UpdaterId { get; set; }
+
         [NotListShow]
         [NotEditable]
         public string News_UpdaterUserName { get; set; }

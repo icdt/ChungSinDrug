@@ -1,0 +1,48 @@
+USE [ChungSinDrugDB]
+GO
+
+INSERT INTO [dbo].[SystemParas]
+           ([SystemPara_Id]
+           ,[SystemPara_ParentId]
+           ,[SystemPara_Name]
+           ,[SystemPara_Code]
+           ,[SystemPara_Sort]
+           ,[SystemPara_Group]
+           ,[SystemPara_DelLock]
+		   ,[SystemPara_CreateTime]
+		   ,[SystemPara_UpdateTime]
+		   )
+     VALUES
+           (newId(),
+		   '-1',
+		   '公告',
+		   '1',
+		   '1',
+		   '最新消息',
+		   '0',
+		   GETDATE(),
+		   GETDATE()
+		   )
+
+		   INSERT INTO [dbo].[SystemParas]
+           ([SystemPara_Id]
+           ,[SystemPara_ParentId]
+           ,[SystemPara_Name]
+           ,[SystemPara_Code]
+           ,[SystemPara_Sort]
+           ,[SystemPara_Group]
+           ,[SystemPara_DelLock]
+		   ,[SystemPara_CreateTime]
+		   ,[SystemPara_UpdateTime])
+     VALUES
+           (newId(),
+		   '-1',
+		   '促銷',
+		   '2',
+		   '2',
+		   '最新消息',
+		   '0',
+		   GETDATE(),
+		   GETDATE()
+		   )
+GO

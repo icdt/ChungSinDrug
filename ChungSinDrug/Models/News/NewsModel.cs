@@ -10,19 +10,24 @@ namespace ChungSinDrug.Models
 {
     public class NewsModel
     {
-        [HiddenInput(DisplayValue =false)]
+        [HiddenInput(DisplayValue = false)]
         public string News_Id { get; set; }
 
         [Display(Name = "標題")]
+        [Required]
         public string News_Title { get; set; }
 
         [Display(Name = "開始時間")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString ="{0:yyyy-MM-dd}")]
         [UIHint("DatePicker")]
-        public string News_StartTime { get; set; }
+        [Required]
+        public DateTime News_StartTime { get; set; }
 
         [Display(Name = "結束時間")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [UIHint("DatePicker")]
-        public string News_EndTime { get; set; }
+        [Required]
+        public DateTime News_EndTime { get; set; }
 
         [AllowHtml]
         [Display(Name = "內文")]
@@ -33,8 +38,10 @@ namespace ChungSinDrug.Models
         [Display(Name = "封面圖片")]
         [UIHint("Uploadify", null, "Path", "News")]
         public string News_CoverImage { get; set; }
-        [Required(ErrorMessage = "Category 為必填")]
-        [UIHint("DropDownListTemplate", "", "OptionLabel", "- 請選擇 -", "DropDownListMethodName", "CategoryList", "DropDownListName","最新消息")]
+
+        [Display(Name = "分類")]
+        [Required]
+        [UIHint("DropDownListTemplate", "", "OptionLabel", "- 請選擇 -", "DropDownListMethodName", "CategoryList", "DropDownListName", "最新消息")]
         public string News_Tag { get; set; }
 
         [Display(Name = "是否發布")]
@@ -42,34 +49,31 @@ namespace ChungSinDrug.Models
 
         [Display(Name = "是否置頂")]
         public bool News_IsTop { get; set; }
-        
-        [ScaffoldColumn(true)]
+
+        [Display(Name = "建立時間")]
         public DateTime News_CreateTime { get; set; }
 
-        [ScaffoldColumn(false)]
         public string News_CreatorId { get; set; }
 
-        [ScaffoldColumn(false)]
+        [Display(Name = "建立人員")]
         public string News_CreatorUserName { get; set; }
 
-        [ScaffoldColumn(false)]
+        [Display(Name ="更新時間")]
         public DateTime News_UpdateTime { get; set; }
 
-        [ScaffoldColumn(false)]
         public string News_UpdaterId { get; set; }
 
-        [ScaffoldColumn(false)]
+        [Display(Name ="更新人員")]
         public string News_UpdaterUserName { get; set; }
 
-        [ScaffoldColumn(false)]
         public bool News_DelLock { get; set; }
 
         public NewsModel()
         {
             this.News_Id = Guid.NewGuid().ToString();
             this.News_Title = "";
-            this.News_StartTime = DateTime.Now.ToString("yyyy-MM-dd");
-            this.News_EndTime = DateTime.Now.ToString("yyyy-MM-dd");
+            this.News_StartTime = DateTime.Now;
+            this.News_EndTime = DateTime.Now.AddDays(14);
             this.News_Content = "";
             this.News_CoverImage = "";
             this.News_IsPublish = true;

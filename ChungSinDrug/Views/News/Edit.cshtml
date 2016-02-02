@@ -1,0 +1,209 @@
+﻿@model ChungSinDrug.Models.NewsModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>News</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<table class="form" border="0" align="center" cellpadding="0" cellspacing="0">
+        @Html.HiddenFor(model => model.News_Id)
+
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_Title)：
+             </td>
+             <td class="View_1_2">
+                @Html.EditorFor(model => model.News_Title, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.News_Title, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_StartTime)：
+             </td>
+             <td class="View_1_2">
+                @Html.EditorFor(model => model.News_StartTime, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.News_StartTime, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_EndTime)：
+             </td>
+             <td class="View_1_2">
+                @Html.EditorFor(model => model.News_EndTime, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.News_EndTime, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_Content)：
+             </td>
+             <td class="View_1_2">
+                @Html.EditorFor(model => model.News_Content, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.News_Content, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_CoverImage)：
+             </td>
+             <td class="View_1_2">
+                @Html.EditorFor(model => model.News_CoverImage, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.News_CoverImage, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_Tag)：
+             </td>
+             <td class="View_1_2">
+                @Html.EditorFor(model => model.News_Tag, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.News_Tag, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_IsPublish)：
+             </td>
+             <td class="View_1_2">
+                @Html.EditorFor(model => model.News_IsPublish)
+                @Html.ValidationMessageFor(model => model.News_IsPublish, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_IsTop)：
+             </td>
+             <td class="View_1_2">
+                @Html.EditorFor(model => model.News_IsTop)
+                @Html.ValidationMessageFor(model => model.News_IsTop, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_CreateTime)：
+             </td>
+             <td class="View_1_2">
+                @Html.DisplayFor(model => model.News_CreateTime)
+                @Html.ValidationMessageFor(model => model.News_CreateTime, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_CreatorUserName)：
+             </td>
+             <td class="View_1_2">
+                @Html.DisplayFor(model => model.News_CreatorUserName)
+                @Html.ValidationMessageFor(model => model.News_CreatorUserName, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_UpdateTime)：
+             </td>
+             <td class="View_1_2">
+                @Html.DisplayFor(model => model.News_UpdateTime)
+                @Html.ValidationMessageFor(model => model.News_UpdateTime, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.News_UpdaterUserName)：
+             </td>
+             <td class="View_1_2">
+                @Html.DisplayFor(model => model.News_UpdaterUserName)
+                @Html.ValidationMessageFor(model => model.News_UpdaterUserName, "", new { @class = "text-danger" })
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="btn_area">
+                    <input type="submit" value="儲存資料" class="k-button" />
+                    @Html.ActionLink("回到列表", "Index", null, new { @class = "k-button" })
+                </div>
+            </td>
+        </tr>
+    </table>
+
+}
+
+@section Scripts {
+@if(TempData["SaveOk"]!=null){
+	if((Boolean)TempData["SaveOk"]){
+		<script>
+	        alert("儲存成功")
+			window.location.href = '@Url.Action("Index", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString())';
+	    </script>
+	}else{
+	   <script>
+	      alert("儲存失敗")
+	    </script>
+	}
+}
+}

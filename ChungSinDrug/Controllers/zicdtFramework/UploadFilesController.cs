@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ChungSinDrug.Controllers
+namespace icdtFramework.Controllers
 {
     public class UploadController : Controller
     {
