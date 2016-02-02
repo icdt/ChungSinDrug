@@ -62,7 +62,7 @@ foreach (PropertyMetadata property in properties) {
         }
 #>
         <th>
-            @Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().<#= GetValueExpression(property) #>)
         </th>
 <#
     }
@@ -96,16 +96,24 @@ if (pkName != null) {
 #>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.<#= pkName #> }) |
-            @Html.ActionLink("Details", "Details", new { id=item.<#= pkName #> }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.<#= pkName #> })
+			@using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm" }))
+             {
+                @Html.Hidden("id",  id=item.<#= pkName #>)
+                @Html.AntiForgeryToken()
+                <button class="btn btn-danger" onclick="ccheck()">Delete</button>
+             }
         </td>
 <#
 } else {
 #>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+			 @using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm" }))
+             {
+                @Html.Hidden("id",  item.<#= pkName #>)
+                @Html.AntiForgeryToken()
+                <button class="btn btn-danger" onclick="ccheck()">Delete</button>
+             }
         </td>
 <#
 }
@@ -115,6 +123,20 @@ if (pkName != null) {
 
 </table>
 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+@section Scripts{
+ <script> 
+     function ccheck() {
+            if (confirm("確定刪除?")) {
+                $("#targetForm").submit();
+            }
+            else {
+                return;
+            }
+        };
+ </script>
+
+
+}
 <#
 // The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
 #>
