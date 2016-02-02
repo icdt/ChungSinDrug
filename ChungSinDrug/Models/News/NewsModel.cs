@@ -17,20 +17,21 @@ namespace ChungSinDrug.Models
         public string News_Title { get; set; }
 
         [Display(Name = "開始時間")]
-        [UIHint("DatePicker", "", "Width", 150, "Color", "red")]
+        [UIHint("DatePicker")]
         public string News_StartTime { get; set; }
 
         [Display(Name = "結束時間")]
-        [UIHint("DatePicker", "", "Width", 150, "Color", "red")]
+        [UIHint("DatePicker")]
         public string News_EndTime { get; set; }
 
-        [RichText]
         [AllowHtml]
         [Display(Name = "內文")]
+        [UIHint("Ckeditor")]
         [DataType(DataType.Html)]
         public string News_Content { get; set; }
 
         [Display(Name = "封面圖片")]
+        [UIHint("Uploadify", null, "Path", "News")]
         public string News_CoverImage { get; set; }
 
         [Display(Name = "是否發布")]
@@ -72,10 +73,10 @@ namespace ChungSinDrug.Models
             this.News_IsTop = false;
             this.News_CreateTime = DateTime.Now;
             this.News_CreatorId = "";
-            this.News_CreatorUserName = "";
+            this.News_CreatorUserName = "系統管理員";
             this.News_UpdateTime = DateTime.Now;
             this.News_UpdaterId = "";
-            this.News_UpdaterUserName = "";
+            this.News_UpdaterUserName = "系統管理員";
             this.News_DelLock = false;
         }
 

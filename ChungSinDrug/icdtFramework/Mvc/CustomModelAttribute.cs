@@ -6,14 +6,20 @@ using System.Web;
 namespace icdtFramework.CustomViewTemplate
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class RichTextAttribute : Attribute
+    public class NotShowAttribute : Attribute
     {
-        public RichTextAttribute() { }
+        public NotShowAttribute() { }
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class NotEditableAttribute : Attribute
+    {
+        public NotEditableAttribute() { }
     }
 
     public static class T4Helpers
     {
-        public static bool IsRichText(string viewDataTypeName, string propertyName)
+        public static bool NotShow(string viewDataTypeName, string propertyName)
         {
             bool isRichText = false;
             Attribute richText = null;
@@ -21,7 +27,22 @@ namespace icdtFramework.CustomViewTemplate
 
             if (typeModel != null)
             {
-                richText = (RichTextAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(RichTextAttribute));
+                richText = (NotShowAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(NotShowAttribute));
+                return richText != null;
+            }
+
+            return isRichText;
+        }
+
+        public static bool NotEditable(string viewDataTypeName, string propertyName)
+        {
+            bool isRichText = false;
+            Attribute richText = null;
+            Type typeModel = Type.GetType(viewDataTypeName);
+
+            if (typeModel != null)
+            {
+                richText = (NotEditableAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(NotEditableAttribute));
                 return richText != null;
             }
 

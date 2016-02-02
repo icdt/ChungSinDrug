@@ -19,35 +19,41 @@ namespace ChungSinDrug.Models
 
         [Display(Name = "開始時間")]
         [DataType(DataType.DateTime)]
-        [UIHint("DatePicker", null, "Width", 150, "Color", "red")]
+        [UIHint("DatePicker")]
         public DateTime News_StartTime { get; set; }
 
         [Display(Name = "結束時間")]
         [DataType(DataType.DateTime)]
-        [UIHint("DatePicker", null, "Width", 150, "Color", "red")]
+        [UIHint("DatePicker")]
         public DateTime News_EndTime { get; set; }
 
-        [RichText]
         [Display(Name = "內文")]
         public string News_Content { get; set; }
 
         [Display(Name = "封面圖片")]
         public string News_CoverImage { get; set; }
 
-        [Display(Name ="是否發布")]
+        [Display(Name = "是否發布")]
         public bool News_IsPublish { get; set; }
 
         [Display(Name = "是否置頂")]
         public bool News_IsTop { get; set; }
 
+        [NotEditable]
         public DateTime News_CreateTime { get; set; }
+        [NotShow]
         public string News_CreatorId { get; set; }
+        [NotEditable]
         public string News_CreatorUserName { get; set; }
 
+        [NotEditable]
         public DateTime News_UpdateTime { get; set; }
+        [NotShow]
         public string News_UpdaterId { get; set; }
+        [NotEditable]
         public string News_UpdaterUserName { get; set; }
 
+        [NotShow]
         public bool News_DelLock { get; set; }
 
         public News()

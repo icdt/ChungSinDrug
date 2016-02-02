@@ -1,0 +1,17 @@
+﻿@{
+    var htmlfieldprefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var formattedmodelvalue = ViewData.TemplateInfo.FormattedModelValue;
+}
+
+@Html.TextArea("", formattedmodelvalue.ToString(), new { @class = "ckeditor" })
+
+<script>
+    CKEDITOR.replace('@htmlfieldprefix'
+      , {
+           filebrowserImageUploadUrl: '@Url.Action("CkeditorImageUpload", "ImageUpload", new { Area = "" })',
+           height: 230,
+           width: '98%'
+        }
+    );
+</script>
+

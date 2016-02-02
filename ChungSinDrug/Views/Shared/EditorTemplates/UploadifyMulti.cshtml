@@ -1,7 +1,18 @@
 ﻿@{
     var htmlfieldprefix = ViewData.TemplateInfo.HtmlFieldPrefix;
     var formattedmodelvalue = ViewData.TemplateInfo.FormattedModelValue;
+    var imagepath = Html.GetUIHintParametersValue<string>("Path");
 }
+
+<div id="imgbox_@(htmlfieldprefix)" class="imagbox">
+    @if (!String.IsNullOrWhiteSpace(Convert.ToString(formattedmodelvalue)))
+    {
+        <img src="@formattedmodelvalue" />
+    }
+</div>
+<input type="file" name="file" id="uploadify_@(htmlfieldprefix)" />
+@Html.Hidden("", formattedmodelvalue)
+
 <script type="text/javascript">
     $(function () {
         var $inputHidden = $('#' + "@htmlfieldprefix");
@@ -12,7 +23,7 @@
             height: 30,
             multi: true,
             swf: '/icdtFramework/Plugins/uploadify/uploadify.swf',
-            uploader: '@Url.Action("UploadImage","Base")',
+            uploader: '@Url.Action("FileUpload", "ImageUpload", new { path = imagepath })/' + generateUUID(),
             fileObjName: 'file',
             onUploadSuccess: function (file, data, response) {
                 $('#imgbox_' + "@htmlfieldprefix").append('<img src="' + data + '" />');
@@ -23,13 +34,16 @@
             }
         });
     });
+
+    //產生guid
+    function generateUUID() {
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            var r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+        });
+        return uuid;
+    };
 </script>
 
-<div id="imgbox_@(htmlfieldprefix)">
-    @if (!String.IsNullOrWhiteSpace(Convert.ToString(formattedmodelvalue)))
-    {
-        <img src="@formattedmodelvalue" />
-    }
-</div>
-<input type="file" name="file" id="uploadify_@(htmlfieldprefix)" />
-@Html.Hidden("", formattedmodelvalue)

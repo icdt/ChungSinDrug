@@ -1,6 +1,7 @@
 ﻿<#@ template language="C#" HostSpecific="True" #>
 <#@ output extension=".cshtml" #>
 <#@ include file="Imports.include.t4" #>
+<#@ assembly name="C:\Users\user\gitChungSinDrug\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
 @model <#= ViewDataTypeName #>Model
 <#
 // "form-control" attribute is only supported for all EditorFor() in System.Web.Mvc 5.1.0.0 or later versions, except for checkbox, which uses a div in Bootstrap
@@ -26,7 +27,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>
 }
 
-<h2><#= ViewName#></h2>
+<h2><#= ViewDataTypeShortName#></h2>
 
 <#
 } else {
@@ -77,10 +78,6 @@ if (ReferenceScriptLibraries) {
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4><#= ViewDataTypeShortName #></h4>
-        <hr />
 <# 
     if (isControlHtmlAttributesSupported) {
 #>
@@ -92,9 +89,14 @@ if (ReferenceScriptLibraries) {
 <#      
     }
 #>
+<table class="form" border="0" align="center" cellpadding="0" cellspacing="0">
 <#
 foreach (PropertyMetadata property in ModelMetadata.Properties) {
-    if (property.Scaffold && !property.IsAssociation) {
+
+    bool notShow = icdtFramework.CustomViewTemplate.T4Helpers.NotShow(ViewDataTypeName, property.PropertyName);
+	bool notEditable = icdtFramework.CustomViewTemplate.T4Helpers.NotEditable(ViewDataTypeName, property.PropertyName);
+
+    if (property.Scaffold && !property.IsAssociation && !notShow) {
         if (property.IsPrimaryKey) {
 #>
         @Html.HiddenFor(model => model.<#= property.PropertyName #>)
@@ -102,19 +104,21 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 <#
         } else if (!property.IsReadOnly) {
 #>
-        <div class="form-group">
+         <tr>
+		 <td class="View_1_1_1">
 <#
             if (property.IsForeignKey) {
 #>
-            @Html.LabelFor(model => model.<#= property.PropertyName #>, "<#= GetAssociationName(property) #>", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.DisplayNameFor(model => model.<#= property.PropertyName #>, "<#= GetAssociationName(property) #>")：
 <#
             } else {
 #>
-            @Html.LabelFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.DisplayNameFor(model => model.<#= property.PropertyName #>)：
 <#
             }
 #>
-            <div class="col-md-10">
+             </td>
+             <td class="View_1_2">
 <#
             bool isCheckbox = property.TypeName.Equals(boolType);
             if (property.IsForeignKey) {
@@ -122,7 +126,7 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 <# 
             if (isControlHtmlAttributesSupported) {
 #>
-                @Html.DropDownList("<#= property.PropertyName #>", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("<#= property.PropertyName #>", null, htmlAttributes: new { @class = "k-select" })
 <#
             } else {
 #>
@@ -134,22 +138,24 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
             } else  if (isControlHtmlAttributesSupported) {
                 if (isCheckbox) {
 #>
-                <div class="checkbox">
-<#
-                    PushIndent("    ");
-#>
                 @Html.EditorFor(model => model.<#= property.PropertyName #>)
 <#
                 } else if (property.IsEnum && !property.IsEnumFlags) {
 #>
                 @Html.EnumDropDownListFor(model => model.<#= property.PropertyName #>, htmlAttributes: new { @class = "form-control" })
 <#
-                } else {
+                } else { 
+				if (notEditable) {
 #>
-                @Html.EditorFor(model => model.<#= property.PropertyName #>, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DisplayFor(model => model.<#= property.PropertyName #>)
 <#
-                }
-            } else {
+              } else {
+#>
+                @Html.EditorFor(model => model.<#= property.PropertyName #>, new { htmlAttributes = new { @class = "k-textbox" } })
+<#
+               } 
+			 } 
+        } else {
 #>
                 @Html.EditorFor(model => model.<#= property.PropertyName #>)
 <#
@@ -166,33 +172,30 @@ foreach (PropertyMetadata property in ModelMetadata.Properties) {
 <#      
             }
 #>
-<#
-            if (isCheckbox && isControlHtmlAttributesSupported) {
-                PopIndent();
-#>
-                </div>
-<#
-            }
-#>
-            </div>
-        </div>
-
+   </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
 <#
         }
     }
 }
 #>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+        <tr>
+            <td colspan="2">
+                <div class="btn_area">
+                    <input type="submit" value="儲存資料" class="k-button" />
+                    @Html.ActionLink("回到列表", "Index", null, new { @class = "k-button" })
+                </div>
+            </td>
+        </tr>
+    </table>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 <#
 if(IsLayoutPageSelected && ReferenceScriptLibraries && IsBundleConfigPresent) {
 #>

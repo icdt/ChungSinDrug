@@ -1,10 +1,10 @@
 ﻿@{ 
     var htmlfieldprefix = ViewData.TemplateInfo.HtmlFieldPrefix;
-    
-	var txtWidth = Html.GetUIHintParametersValue<int>("Width");
-    txtWidth = txtWidth == 0 ? 100 : txtWidth;
-    var color = Html.GetUIHintParametersValue<string>( "Color", "blue");
+    var formattedmodelvalue = ViewData.TemplateInfo.FormattedModelValue;
 }
+
+@Html.TextBox("", formattedmodelvalue, new { @class = "k-textbox" })
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#" + '@htmlfieldprefix').datepicker({
@@ -21,4 +21,3 @@
     });
 </script>
 
-@Html.TextBox("", ViewData.TemplateInfo.FormattedModelValue, new { style=String.Format("width:{0}px;color:{1}",txtWidth,color) })

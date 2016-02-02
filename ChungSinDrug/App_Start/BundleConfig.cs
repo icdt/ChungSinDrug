@@ -25,16 +25,21 @@ namespace ChungSinDrug
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css", 
+                      "~/Content/PagedList.css",
+                      "~/Content/BackendStyle.css"));
 
             bundles.Add(new ScriptBundle("~/icdtFramework/plugins/js").Include(
                       "~/icdtFramework/Plugins/datepicker/dialogUI.js",
                       "~/icdtFramework/Plugins/datepicker/jquery.ui.datepicker-zh-TW.js",
-                      "~/icdtFramework/Plugins/uploadify/jquery.uploadify-3.1.min.js"));
+                      "~/icdtFramework/Plugins/uploadify/jquery.uploadify-3.1.min.js",
+                      "~/icdtFramework/Plugins/ckeditor/ckeditor.js"));
 
             bundles.Add(new StyleBundle("~/icdtFramework/plugins/css").Include(
                       "~/icdtFramework/Plugins/datepicker/dislog.css",
-                      "~/icdtFramework/Plugins/uploadify/uploadify.css"));
+                      "~/icdtFramework/Plugins/uploadify/uploadify.css",
+                      "~/icdtFramework/Plugins/kendo/kendo.common.min.css",
+                      "~/icdtFramework/Plugins/kendo/kendo.default.min.css"));
         }
     }
 }
