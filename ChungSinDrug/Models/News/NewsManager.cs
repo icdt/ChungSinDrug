@@ -39,7 +39,7 @@ namespace ChungSinDrug.Models
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                return db.News.OrderByDescending(a => a.News_CreateTime).ToPagedList(pageNumber, pageSize);
+                return db.News.Where(a=>!a.News_DelLock).OrderByDescending(a => a.News_CreateTime).ToPagedList(pageNumber, pageSize);
 
             }
         }
