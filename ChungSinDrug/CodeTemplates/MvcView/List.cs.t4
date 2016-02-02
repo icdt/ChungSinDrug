@@ -1,6 +1,7 @@
 ﻿<#@ template language="C#" HostSpecific="True" #>
 <#@ output extension=".cshtml" #>
 <#@ include file="Imports.include.t4" #>
+<#@ assembly name="C:\Users\user\gitChungSinDrug\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
 @model IPagedList<#= "<" + ViewDataTypeName + "Model" + ">" #>
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
@@ -44,15 +45,21 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
     PushIndent("    ");
 }
 #>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="list" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
+        <td class="list_function">@Html.ActionLink("新增資料", "Create", null, new { @class = "k-button" })</td>
+    </tr>
+    <tr>
+        <td class="list_content">
+            <table border="0">
+                <tr class="View_1_7">
 <#
 IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
 foreach (PropertyMetadata property in properties) {
-    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+
+     bool notShow = icdtFramework.CustomViewTemplate.T4Helpers.NotListShow(ViewDataTypeName, property.PropertyName);
+
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey && !notShow) {
 #>
 <#
         // We do not want to show any association properties for which there is
@@ -61,21 +68,24 @@ foreach (PropertyMetadata property in properties) {
             continue;
         }
 #>
-        <th>
+        <td>
             @Html.DisplayNameFor(model => model.FirstOrDefault().<#= GetValueExpression(property) #>)
-        </th>
+        </td>
 <#
     }
 }
 #>
-        <th></th>
+         <td style="width: 12%;">修改&nbsp;/&nbsp;刪除</td>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="View_1_6">
 <#
 foreach (PropertyMetadata property in properties) {
-    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey) {
+
+    bool notShow = icdtFramework.CustomViewTemplate.T4Helpers.NotListShow(ViewDataTypeName, property.PropertyName);
+
+    if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey && !notShow) {
 #>
 <#
         // We do not want to show any association properties for which there is
@@ -95,34 +105,46 @@ string pkName = GetPrimaryKeyName();
 if (pkName != null) {
 #>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.<#= pkName #> }) |
-			@using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm" }))
+            @Html.ActionLink("編輯", "Edit", new { id=item.<#= pkName #> }, new { @class = "k-button" }) /
+			@using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm", style = "display: inline-block;" }))
              {
-                @Html.Hidden("id",  id=item.<#= pkName #>)
+                @Html.Hidden("id", item.<#= pkName #>)
                 @Html.AntiForgeryToken()
-                <button class="btn btn-danger" onclick="ccheck()">Delete</button>
+                <button class="k-button" onclick="ccheck()">刪除</button>
              }
         </td>
 <#
 } else {
 #>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-			 @using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm" }))
+             @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "k-button" }) /
+			 @using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm", style = "display: inline-block;" }))
              {
-                @Html.Hidden("id",  item.<#= pkName #>)
+                @Html.Hidden("id", "")
                 @Html.AntiForgeryToken()
-                <button class="btn btn-danger" onclick="ccheck()">Delete</button>
+                <button class="k-button" onclick="ccheck()">刪除</button>
              }
         </td>
 <#
 }
 #>
     </tr>
+	<tr>
+        <td colspan="20">
+          <div class="TableTR_BR"></div>
+        </td>
+    </tr>
 }
-
 </table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</td>
+    </tr>
+    <tr>
+        <td class="list_page">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </td>
+    </tr>
+</table>
+
 @section Scripts{
  <script> 
      function ccheck() {

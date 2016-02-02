@@ -687,6 +687,7 @@
     <Content Include="Views\Shared\EditorTemplates\UploadifyMulti.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\EditorTemplates\Ckeditor.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Uploadify.cshtml" />
     <Content Include="Views\News\Create.cshtml" />
     <Content Include="Views\News\Delete.cshtml" />
     <Content Include="Views\News\Details.cshtml" />

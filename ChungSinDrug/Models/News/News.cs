@@ -27,6 +27,7 @@ namespace ChungSinDrug.Models
         [UIHint("DatePicker")]
         public DateTime News_EndTime { get; set; }
 
+        [NotListShow]
         [Display(Name = "內文")]
         public string News_Content { get; set; }
 
@@ -39,21 +40,28 @@ namespace ChungSinDrug.Models
         [Display(Name = "是否置頂")]
         public bool News_IsTop { get; set; }
 
+        [NotListShow]
         [NotEditable]
         public DateTime News_CreateTime { get; set; }
-        [NotShow]
+        [NotListShow]
+        [NotFormShow]
         public string News_CreatorId { get; set; }
+        [NotListShow]
         [NotEditable]
         public string News_CreatorUserName { get; set; }
 
+        [NotListShow]
         [NotEditable]
         public DateTime News_UpdateTime { get; set; }
-        [NotShow]
+        [NotListShow]
+        [NotFormShow]
         public string News_UpdaterId { get; set; }
+        [NotListShow]
         [NotEditable]
         public string News_UpdaterUserName { get; set; }
 
-        [NotShow]
+        [NotListShow]
+        [NotFormShow]
         public bool News_DelLock { get; set; }
 
         public News()

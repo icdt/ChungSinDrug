@@ -1,0 +1,10 @@
+﻿@{
+    var htmlfieldprefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var formattedmodelvalue = ViewData.TemplateInfo.FormattedModelValue;
+}
+
+@if (!string.IsNullOrEmpty(formattedmodelvalue.ToString()))
+{
+    <img src="@formattedmodelvalue" width="80" height="70" />
+}
+

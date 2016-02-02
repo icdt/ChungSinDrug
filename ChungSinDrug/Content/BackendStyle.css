@@ -21,11 +21,39 @@ table {
     border-spacing: 0px 0px;
 }
 
+    table.list {
+        border: 1px solid #EEEEEE;
+        width: 100%;
+        margin: 20px auto;
+    }
+
     table.form {
         border: 1px solid #EEEEEE;
         width: 100%;
         margin: 20px auto;
     }
+
+    table.list .list_function {
+        vertical-align: top;
+        padding: 10px 10px 0;
+    }
+
+    table.list .list_content {
+        vertical-align: top;
+        padding: 10px;
+    }
+
+    table.list .list_page {
+        vertical-align: top;
+        text-align: left;
+        padding: 0 10px;
+        margin: 0;
+    }
+
+        table.list .list_content table {
+            width: 100%;
+            font-size: 12px;
+        }
 
 td {
     vertical-align: middle;
@@ -94,7 +122,9 @@ td {
 }
 
 .View_1_6 {
-    background-color: White;
+    background-color: #fff;
+    text-align: center;
+    height: 40px;
 }
 
     .View_1_6:hover { /*置換底色代表選過*/
@@ -104,6 +134,7 @@ td {
 .View_1_7 {
     background-color: #EEEEEE;
     text-align: center;
+    height: 30px;
 }
 
 .View_1_8 {
@@ -159,7 +190,7 @@ input[type=checkbox] {
 }
 
 .k-button {
-    padding: 5px 10px !important;
+    padding: 3px 10px !important;
     text-decoration: none !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
 }

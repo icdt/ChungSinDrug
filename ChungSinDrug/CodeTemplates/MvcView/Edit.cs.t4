@@ -93,7 +93,7 @@ if (ReferenceScriptLibraries) {
 <#
 foreach (PropertyMetadata property in ModelMetadata.Properties) {
 
-    bool notShow = icdtFramework.CustomViewTemplate.T4Helpers.NotShow(ViewDataTypeName, property.PropertyName);
+    bool notShow = icdtFramework.CustomViewTemplate.T4Helpers.NotFormShow(ViewDataTypeName, property.PropertyName);
 	bool notEditable = icdtFramework.CustomViewTemplate.T4Helpers.NotEditable(ViewDataTypeName, property.PropertyName);
 
     if (property.Scaffold && !property.IsAssociation && !notShow) {

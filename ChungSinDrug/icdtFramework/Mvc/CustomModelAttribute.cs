@@ -6,9 +6,15 @@ using System.Web;
 namespace icdtFramework.CustomViewTemplate
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class NotShowAttribute : Attribute
+    public class NotListShowAttribute : Attribute
     {
-        public NotShowAttribute() { }
+        public NotListShowAttribute() { }
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class NotFormShowAttribute : Attribute
+    {
+        public NotFormShowAttribute() { }
     }
 
     [AttributeUsage(AttributeTargets.Property)]
@@ -19,7 +25,7 @@ namespace icdtFramework.CustomViewTemplate
 
     public static class T4Helpers
     {
-        public static bool NotShow(string viewDataTypeName, string propertyName)
+        public static bool NotListShow(string viewDataTypeName, string propertyName)
         {
             bool isRichText = false;
             Attribute richText = null;
@@ -27,7 +33,22 @@ namespace icdtFramework.CustomViewTemplate
 
             if (typeModel != null)
             {
-                richText = (NotShowAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(NotShowAttribute));
+                richText = (NotListShowAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(NotListShowAttribute));
+                return richText != null;
+            }
+
+            return isRichText;
+        }
+
+        public static bool NotFormShow(string viewDataTypeName, string propertyName)
+        {
+            bool isRichText = false;
+            Attribute richText = null;
+            Type typeModel = Type.GetType(viewDataTypeName);
+
+            if (typeModel != null)
+            {
+                richText = (NotFormShowAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(NotFormShowAttribute));
                 return richText != null;
             }
 
