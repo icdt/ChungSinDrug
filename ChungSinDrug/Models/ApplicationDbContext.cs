@@ -11,6 +11,9 @@ namespace ChungSinDrug.Models
     {
         #region database table
         public DbSet<News> News { get; set; }
+
+        public DbSet<SystemPara> SystemParas { get; set; }
+        
        
         #endregion
 

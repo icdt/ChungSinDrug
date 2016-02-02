@@ -33,6 +33,9 @@ namespace ChungSinDrug.Models
         [Display(Name = "封面圖片")]
         [UIHint("Uploadify", null, "Path", "News")]
         public string News_CoverImage { get; set; }
+        [Required(ErrorMessage = "Category 為必填")]
+        [UIHint("DropDownListTemplate", "", "OptionLabel", "- 請選擇 -", "DropDownListMethodName", "CategoryList", "DropDownListName","最新消息")]
+        public string News_Tag { get; set; }
 
         [Display(Name = "是否發布")]
         public bool News_IsPublish { get; set; }

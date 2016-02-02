@@ -146,6 +146,12 @@ if (pkName != null) {
 </table>
 
 @section Scripts{
+@if(TempData["EditItemNotFound"] != null){
+<script>
+  alert("查無資料");
+</script>
+
+}
  <script> 
      function ccheck() {
             if (confirm("確定刪除?")) {

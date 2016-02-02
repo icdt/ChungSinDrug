@@ -226,7 +226,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\api\ImageUploadController.cs" />
     <Compile Include="Controllers\mvc\HomeController.cs" />
-    <Compile Include="Controllers\mvc\NewsController.cs" />
     <Compile Include="Controllers\UploadFilesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -237,6 +236,7 @@
     <Compile Include="icdtFramework\Helpers\CSVHelper.cs" />
     <Compile Include="icdtFramework\Helpers\DateTimeHelper.cs" />
     <Compile Include="icdtFramework\Helpers\ExcelHelper.cs" />
+    <Compile Include="icdtFramework\Mvc\DropDownListHelper.cs" />
     <Compile Include="icdtFramework\Mvc\ExtendDataAnnotationsModelMetadataProvider.cs" />
     <Compile Include="icdtFramework\Helpers\FileHelper.cs" />
     <Compile Include="icdtFramework\Helpers\ImageHelper.cs" />
@@ -280,6 +280,10 @@
     <Compile Include="Migrations\201601291212336_UpdateNewsModel.Designer.cs">
       <DependentUpon>201601291212336_UpdateNewsModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602020806540_addNewModel.cs" />
+    <Compile Include="Migrations\201602020806540_addNewModel.Designer.cs">
+      <DependentUpon>201602020806540_addNewModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser\ApplicationUser.cs" />
@@ -287,6 +291,8 @@
     <Compile Include="Models\News\News.cs" />
     <Compile Include="Models\News\NewsManager.cs" />
     <Compile Include="Models\News\NewsModel.cs" />
+    <Compile Include="Models\SystemPara\SystemPara.cs" />
+    <Compile Include="Models\SystemPara\SystemParaManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -693,6 +699,7 @@
     <Content Include="Views\News\Details.cshtml" />
     <Content Include="Views\News\Edit.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DropDownListTemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Themes\" />
@@ -721,6 +728,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601291212336_UpdateNewsModel.resx">
       <DependentUpon>201601291212336_UpdateNewsModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602020806540_addNewModel.resx">
+      <DependentUpon>201602020806540_addNewModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿<#@ template language="C#" HostSpecific="True" #>
 <#@ output extension=".cshtml" #>
 <#@ include file="Imports.include.t4" #>
-<#@ assembly name="C:\Users\user\gitChungSinDrug\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
+<#@ assembly name="D:\githubChungSinDrug\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
 @model <#= ViewDataTypeName #>Model
 <#
 // "form-control" attribute is only supported for all EditorFor() in System.Web.Mvc 5.1.0.0 or later versions, except for checkbox, which uses a div in Bootstrap
@@ -203,6 +203,7 @@ if(IsLayoutPageSelected && ReferenceScriptLibraries && IsBundleConfigPresent) {
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
 <#
 }
 #>
@@ -216,6 +217,23 @@ else if(IsLayoutPageSelected && ReferenceScriptLibraries) {
 <#
 }
 #>
+
+@section Scripts {
+@if(TempData["SaveOk"]!=null){
+	if((Boolean)TempData["SaveOk"]){
+		<script>
+	        alert("儲存成功")
+			window.location.href = '@Url.Action("Index", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString())';
+	    </script>
+	}else{
+	   <script>
+	      alert("儲存失敗")
+	    </script>
+	}
+}
+
+
+}
 <#
 // The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
 #>
