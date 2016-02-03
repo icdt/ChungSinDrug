@@ -224,7 +224,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\backend\NewsController.cs" />
     <Compile Include="Controllers\zicdtFramework\ImageUploadController.cs" />
     <Compile Include="Controllers\website\HomeController.cs" />
     <Compile Include="Controllers\zicdtFramework\UploadFilesController.cs" />
@@ -594,11 +593,6 @@
     <Content Include="Views\Shared\EditorTemplates\DropDownListTemplate.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DropDownListTemplate.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ShowCH.cshtml" />
-    <Content Include="Views\News\Create.cshtml" />
-    <Content Include="Views\News\Delete.cshtml" />
-    <Content Include="Views\News\Details.cshtml" />
-    <Content Include="Views\News\Edit.cshtml" />
-    <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Themes\" />
@@ -615,6 +609,7 @@
     <Folder Include="CodeTemplates\ODataControllerWithActions\" />
     <Folder Include="CodeTemplates\ODataControllerWithContext\" />
     <Folder Include="Controllers\api\" />
+    <Folder Include="Controllers\backend\" />
     <Folder Include="icdtFramework\Plugins\datepicker\images\" />
     <Folder Include="icdtFramework\Plugins\datepicker\uitimepicker\" />
     <Folder Include="Uploads\" />
