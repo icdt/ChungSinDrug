@@ -1,16 +1,26 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using icdtFramework.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace ChungSinDrug.Models
+namespace icdtFramework.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        [ForeignKey("UserProfile")]
+        public string IdFK_UserProfile { get; set; }
+        public virtual MemberProfile UserProfile { get; set; }
+
+        [ForeignKey("AuthOptions")]
+        public string IdFK_AuthOptions { get; set; }
+        public virtual AuthOption AuthOptions { get; set; }
+
         public bool DelLock { get; set; }
 
         public DateTime CreateTime { get; set; }

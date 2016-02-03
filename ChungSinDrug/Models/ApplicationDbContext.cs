@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
+﻿using icdtFramework.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,9 +11,12 @@ namespace ChungSinDrug.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         #region database table
+        public DbSet<AuthOption> AuthOptions { get; set; }
+        public DbSet<SystemPara> SystemParas { get; set; }
+
+
         public DbSet<News> News { get; set; }
 
-        public DbSet<SystemPara> SystemParas { get; set; }
         
        
         #endregion

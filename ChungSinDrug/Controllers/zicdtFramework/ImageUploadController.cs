@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace icdtFramework.Controllers
 {
-    public class ImageUploadController : Controller
+    public class ImageUploadController : MvcBaseController
     {
         /// <summary>
         /// 圖片上傳

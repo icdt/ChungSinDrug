@@ -9,7 +9,13 @@ namespace icdtFramework.Mvc
 {
     public static class DropDownListHelper
     {
-        public static IEnumerable<SelectListItem> CategoryList(object groupName, object target)
+        /// <summary>
+        /// EditorFor: 下拉選單的選項
+        /// </summary>
+        /// <param name="groupName"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
+        public static IEnumerable<SelectListItem> GetOptions(object groupName, object target)
         {
             List<SelectListItem> items = new List<SelectListItem>();
             if (groupName == null) return items;
@@ -28,6 +34,12 @@ namespace icdtFramework.Mvc
             return items;
         }
 
+        /// <summary>
+        /// Display在列表顯示中文值
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public static string GetName(string group, string code)
         {
             return SystemParaManager.GetName(group, code);

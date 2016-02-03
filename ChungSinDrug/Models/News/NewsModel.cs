@@ -41,7 +41,7 @@ namespace ChungSinDrug.Models
 
         [Display(Name = "分類")]
         [Required]
-        [UIHint("DropDownListTemplate", "", "OptionLabel", "- 請選擇 -", "DropDownListMethodName", "CategoryList", "DropDownListName", "最新消息")]
+        [UIHint("DropDownListTemplate", "", "OptionLabel", "- 請選擇 -", "DropDownListMethodName", "GetOptions", "DropDownListName", "最新消息")]
         public string News_Tag { get; set; }
 
         [Display(Name = "是否發布")]

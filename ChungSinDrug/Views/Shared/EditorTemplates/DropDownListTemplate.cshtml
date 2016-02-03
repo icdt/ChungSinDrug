@@ -1,9 +1,7 @@
 ﻿
 @{
     var optionLabel = Html.GetUIHintParametersValue<string>("OptionLabel");
-
     var methodName = Html.GetUIHintParametersValue<string>("DropDownListMethodName");
-
     var groupName = Html.GetUIHintParametersValue<string>("DropDownListName");
     var source = typeof(DropDownListHelper)
                     .GetMethod(methodName)

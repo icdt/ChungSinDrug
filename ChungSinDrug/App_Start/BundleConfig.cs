@@ -25,9 +25,19 @@ namespace icdtFramework.Configs
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/metisMenu.css",
+                      "~/Content/sb-admin-2.css",
                       "~/Content/site.css", 
                       "~/Content/PagedList.css",
                       "~/Content/BackendStyle.css"));
+
+            bundles.Add(new StyleBundle("~/admin/theme/css").Include(
+                      "~/Content/metisMenu.css",
+                      "~/Content/sb-admin-2.css"));
+
+            bundles.Add(new ScriptBundle("~/admin/theme/js").Include(
+                      "~/Scripts/metisMenu.js",
+                      "~/Scripts/sb-admin-2.js"));
 
             bundles.Add(new ScriptBundle("~/icdtFramework/plugins/js").Include(
                       "~/icdtFramework/Plugins/datepicker/dialogUI.js",

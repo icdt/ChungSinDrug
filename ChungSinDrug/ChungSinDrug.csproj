@@ -218,6 +218,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="Controllers\zicdtFramework\MvcBaseController.cs" />
+    <Compile Include="Controllers\zicdtFramework\AccountController.cs" />
+    <Compile Include="Controllers\zicdtFramework\ManageController.cs" />
+    <Compile Include="icdtFramework\Filters\AjaxValidateAntiForgeryTokenAttribute.cs" />
+    <Compile Include="icdtFramework\Filters\AuthOptionAuthorizeAttribute.cs" />
+    <Compile Include="icdtFramework\Identity\icdtPasswordHasher.cs" />
+    <Compile Include="Models\ApplicationUser\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationUser\ApplicationUserModel.cs" />
+    <Compile Include="Models\ApplicationUser\AuthOption.cs" />
+    <Compile Include="Models\ApplicationUser\CustomerProfile.cs" />
+    <Compile Include="Models\ApplicationUser\EmployeeProfile.cs" />
+    <Compile Include="Models\ApplicationUser\EmployeeUserModel.cs" />
+    <Compile Include="Models\ApplicationUser\IMemberProfile.cs" />
+    <Compile Include="Models\ApplicationUser\ManageViewModels.cs" />
+    <Compile Include="Models\ApplicationUser\UserAccountManager.cs" />
     <Compile Include="T4GenerateManager.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -229,10 +244,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\admin\DashboardController.cs" />
+    <Compile Include="Controllers\api\DashboardController.cs" />
     <Compile Include="Controllers\zicdtFramework\ImageUploadController.cs" />
     <Compile Include="Controllers\website\WebsiteController.cs" />
-    <Compile Include="Controllers\zicdtFramework\UploadFilesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -306,7 +320,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\metisMenu.css" />
+    <Content Include="Content\metisMenu.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\sb-admin-2.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -517,6 +534,9 @@
     <Content Include="icdtFramework\Plugins\uploadify\img\uploadify-cancel.png" />
     <Content Include="icdtFramework\Plugins\uploadify\uploadify.css" />
     <Content Include="icdtFramework\Plugins\uploadify\uploadify.swf" />
+    <Content Include="Scripts\metisMenu.js" />
+    <Content Include="Scripts\metisMenu.min.js" />
+    <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="T4GenerateManager.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4GenerateManager.cs</LastGenOutput>
@@ -587,6 +607,9 @@
     <Content Include="Views\Admin\Dashboard\Index.cshtml" />
     <Content Include="Views\Admin\_Navbar.cshtml" />
     <Content Include="Views\Admin\_LoginStatusTopRight.cshtml" />
+    <Content Include="Scripts\metisMenu.js.map" />
+    <Content Include="Scripts\metisMenu.min.js.map" />
+    <Content Include="Views\Admin\Login\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Themes\" />
@@ -602,10 +625,12 @@
     <Folder Include="CodeTemplates\MvcViewWithoutModel\" />
     <Folder Include="CodeTemplates\ODataControllerWithActions\" />
     <Folder Include="CodeTemplates\ODataControllerWithContext\" />
-    <Folder Include="Controllers\api\" />
+    <Folder Include="Controllers\admin\" />
     <Folder Include="icdtFramework\Plugins\datepicker\images\" />
     <Folder Include="icdtFramework\Plugins\datepicker\uitimepicker\" />
     <Folder Include="Uploads\" />
+    <Folder Include="Views\Account\" />
+    <Folder Include="Views\AdminBase\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601290716167_InitialDB.resx">
