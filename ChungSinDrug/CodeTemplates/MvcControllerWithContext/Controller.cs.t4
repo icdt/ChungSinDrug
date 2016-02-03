@@ -116,16 +116,11 @@ namespace <#= Namespace #>
 
         public ActionResult Edit(<#= primaryKeyNullableTypeName #> id)
         {
-            if (id == null)
-            {
-                TempData["EditItemNotFound"] = true;
-                return RedirectToAction("Index");
-            }
 			<#= ModelTypeName #> theItem = <#= ModelTypeName #>Manager.Get(id);
 			if (theItem  == null)
             {
 			    TempData["EditItemNotFound"] = true;
-                return RedirectToAction("Index");
+               return View();
             }
 			var theItemModel = this.DomainToModel(theItem);
            
@@ -141,7 +136,6 @@ namespace <#= Namespace #>
 				try
 				{
 					<#= ModelTypeName #> <#= ModelVariable #>Item = this.ModelToDomain(<#= ModelVariable #>Model);
-
 		     		<#= ModelTypeName #>Manager.Update(<#= ModelVariable #>Item);
 					 TempData["SaveOk"]  = true;
 				}
@@ -162,15 +156,15 @@ namespace <#= Namespace #>
 			  <#= ModelTypeName #>  <#= ModelVariable #>Item = <#= ModelTypeName #>Manager.Get(id);
 			  if(<#= ModelVariable #>Item == null)
 			  {
-			    TempData["SaveOk"] = false;
+			    TempData["DeleteOk"] = false;
 				return RedirectToAction("Index");
 			  }
 			  <#= ModelTypeName #>Manager.Remove(<#= ModelVariable #>Item);
-			  TempData["SaveOk"] = true;
+			  TempData["DeleteOk"] = true;
 			}
 			catch(Exception)
 			{
-			   TempData["SaveOk"] = false;
+			   TempData["DeleteOk"] = false;
 			}
 		 
 			return RedirectToAction("Index");

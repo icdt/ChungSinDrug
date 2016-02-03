@@ -26,7 +26,20 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 }
 #>
 }
-
+@section header {
+@if((Boolean)TempData["SaveOk"]){
+	if((Boolean)TempData["SaveOk"]){
+		<script>
+	        alert("儲存成功")
+			window.location.href = '@Url.Action("Index", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString())';
+	    </script>
+	}else{
+	   <script>
+	      alert("儲存失敗")
+	    </script>
+	}
+}
+}
 <h2><#= ViewDataTypeShortName#></h2>
 
 <#
@@ -222,21 +235,6 @@ else if(IsLayoutPageSelected && ReferenceScriptLibraries) {
 <#
 }
 #>
-@section Scripts {
-   @if(TempData["SaveOk"]!=null){
-	if((Boolean)TempData["SaveOk"]){
-		<script>
-	        alert("儲存成功")
-			window.location.href = '@Url.Action("Index", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString())';
-	    </script>
-	}else{
-	   <script>
-	      alert("儲存失敗")
-	    </script>
-	}
-  }   
-
-}
 <#
 // The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
 #>
