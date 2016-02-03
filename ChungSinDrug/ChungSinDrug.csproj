@@ -227,11 +227,6 @@
     <Compile Include="Controllers\zicdtFramework\ImageUploadController.cs" />
     <Compile Include="Controllers\website\HomeController.cs" />
     <Compile Include="Controllers\zicdtFramework\UploadFilesController.cs" />
-    <Compile Include="GenerateManager.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateManager.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -289,7 +284,6 @@
     <Compile Include="Models\ApplicationUser\ApplicationUser.cs" />
     <Compile Include="Models\DbSeed.cs" />
     <Compile Include="Models\News\News.cs" />
-    <Compile Include="Models\News\NewsManager.cs" />
     <Compile Include="Models\News\NewsModel.cs" />
     <Compile Include="Models\SystemPara\SystemPara.cs" />
     <Compile Include="Models\SystemPara\SystemParaManager.cs" />

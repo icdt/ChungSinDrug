@@ -12,7 +12,7 @@ string projectName = "ChungSinDrug";
 string modelName = "News";
 string modelVariable = "news";
 string modelDbSetName = "News";
-string savePath = "\\Models\\News\\NewssManager.cs";
+string savePath = "\\Models\\News\\NewsManager.cs";
 var project = GetProjectContainingFile("News.cs");
 var domainModels = GetClassesOf(project).ToList();	
 #>
@@ -58,8 +58,9 @@ namespace <#=projectName#>.Models
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                return db.<#=modelDbSetName#>.OrderByDescending(a => a.<#=modelName#>_CreateTime).ToPagedList(pageNumber, pageSize);
-
+                return db.<#=modelDbSetName#>.Where(a => a.<#=modelName#>_DelLock == false)
+				.OrderByDescending(a => a.<#=modelName#>_CreateTime)
+				.ToPagedList(pageNumber, pageSize);
             }
         }
 
