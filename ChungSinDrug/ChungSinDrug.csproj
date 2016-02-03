@@ -298,6 +298,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\ChungSinDrug.dll" />
+    <Content Include="bin\ChungSinDrug.pdb" />
     <Content Include="CodeTemplates\AssemblyVersions.xml" />
     <Content Include="CodeTemplates\PackageVersions5.0.0.xml" />
     <Content Include="CodeTemplates\PackageVersions5.1.0.xml" />

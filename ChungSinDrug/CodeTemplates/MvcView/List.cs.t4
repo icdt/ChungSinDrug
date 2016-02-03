@@ -1,7 +1,7 @@
 ﻿<#@ template language="C#" HostSpecific="True" #>
 <#@ output extension=".cshtml" #>
 <#@ include file="Imports.include.t4" #>
-<#@ assembly name="C:\Users\user\gitChungSinDrug\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
+<#@ assembly name="D:\githubChungSinDrug\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
 @model IPagedList<#= "<" + ViewDataTypeName + "Model" + ">" #>
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
@@ -23,15 +23,6 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>
 }
 
-@section header{
-@if ((Boolean)TempData["DeleteOk"])
-{
-    <script>
-        alert("刪除成功");
-    </script>
-
-}
-}
 <h2><#= ViewName#></h2>
 
 <#
