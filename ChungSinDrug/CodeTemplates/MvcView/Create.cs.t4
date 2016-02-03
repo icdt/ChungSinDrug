@@ -1,7 +1,7 @@
 ﻿<#@ template language="C#" HostSpecific="True" #>
 <#@ output extension=".cshtml" #>
 <#@ include file="Imports.include.t4" #>
-<#@ assembly name="D:\githubChungSinDrug\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
+<#@ assembly name="C:\Users\icdt\Desktop\chg\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
 @model <#= ViewDataTypeName #>Model
 <#
 // "form-control" attribute is only supported for all EditorFor() in System.Web.Mvc 5.1.0.0 or later versions, except for checkbox, which uses a div in Bootstrap

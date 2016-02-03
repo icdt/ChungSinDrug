@@ -37,7 +37,6 @@ namespace ChungSinDrug.Models
         public string News_CoverImage { get; set; }
 
         [Required(ErrorMessage = "Category 為必填")]
-        [UIHint("DropDownListTemplate", "", "OptionLabel", "- 請選擇 -", "DropDownListMethodName", "CategoryList")]
         public string News_Tag { get; set; }
 
         [Display(Name = "是否發布")]

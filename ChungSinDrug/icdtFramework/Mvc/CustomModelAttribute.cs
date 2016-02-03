@@ -39,11 +39,12 @@ namespace icdtFramework.CustomViewTemplate
     {
         private const string MODEL_NAME_SPACE = "ChungSinDrug.Models.";
 
+        #region View使用, 不能加NameSpace
         public static bool T4NotListShow(string viewDataTypeName, string propertyName)
         {
             bool isRichText = false;
             Attribute richText = null;
-            Type typeModel = Type.GetType(MODEL_NAME_SPACE + viewDataTypeName);
+            Type typeModel = Type.GetType(viewDataTypeName);
 
             if (typeModel != null)
             {
@@ -58,7 +59,7 @@ namespace icdtFramework.CustomViewTemplate
         {
             bool isRichText = false;
             Attribute richText = null;
-            Type typeModel = Type.GetType(MODEL_NAME_SPACE + viewDataTypeName);
+            Type typeModel = Type.GetType(viewDataTypeName);
 
             if (typeModel != null)
             {
@@ -73,7 +74,7 @@ namespace icdtFramework.CustomViewTemplate
         {
             bool isRichText = false;
             Attribute richText = null;
-            Type typeModel = Type.GetType(MODEL_NAME_SPACE + viewDataTypeName);
+            Type typeModel = Type.GetType(viewDataTypeName);
 
             if (typeModel != null)
             {
@@ -83,7 +84,9 @@ namespace icdtFramework.CustomViewTemplate
 
             return isRichText;
         }
+        #endregion
 
+        #region ModelManager使用, 需加NameSpace
         public static bool T4IsStartOfDay(string viewDataTypeName, string propertyName)
         {
             bool isRichText = false;
@@ -113,5 +116,6 @@ namespace icdtFramework.CustomViewTemplate
 
             return isRichText;
         }
+        #endregion
     }
 }

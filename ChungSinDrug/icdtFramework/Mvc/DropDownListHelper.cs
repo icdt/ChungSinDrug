@@ -27,5 +27,10 @@ namespace icdtFramework.Mvc
             }
             return items;
         }
+
+        public static string GetName(string group, string code)
+        {
+            return SystemParaManager.GetName(group, code);
+        }
     }
 }
