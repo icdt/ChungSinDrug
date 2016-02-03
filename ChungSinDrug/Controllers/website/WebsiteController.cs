@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ChungSinDrug.Controllers
 {
-    public class HomeController : Controller
+    public class WebsiteController : Controller
     {
         public ActionResult Index()
         {

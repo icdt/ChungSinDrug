@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace LightSystem
+namespace icdtFramwork.Configs
 {
     public class AutoMapperConfig
     {

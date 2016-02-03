@@ -1,0 +1,75 @@
+﻿<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            @{
+
+                if (@ViewBag.LoginUser.AuthOptions.AuthOption_Admin)
+                {
+                    <li>
+                        <a href="@Url.Action("Index","Members")"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;成員管理</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Departments")"><i class="fa fa-users fa-fw"></i>&nbsp;&nbsp;部門管理</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Projects")"><i class="fa fa-book fa-fw"></i>&nbsp;&nbsp;專案管理</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","JobCategories")"><i class="fa fa-th-list fa-fw"></i>&nbsp;&nbsp;分類管理</a>
+                    </li>
+
+                }
+                if (@ViewBag.LoginUser.AuthOptions.AuthOption_Report || @ViewBag.LoginUser.AuthOptions.AuthOption_ReportOneMonth)
+                {
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>&nbsp;&nbsp;報表<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="@Url.Action("A", "Reports", new { start=ViewBag.StartTime, end=ViewBag.EndTime})">工作時數統計</a>
+                            </li>
+
+                            @if (@ViewBag.LoginUser.AuthOptions.AuthOption_Report)
+                            {
+                                <li>
+                                    <a href="@Url.Action("B", "Reports", new { type=1, start=ViewBag.StartTime, end=ViewBag.EndTime})">成本項目報表</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("B", "Reports", new { type=2, start=ViewBag.StartTime, end=ViewBag.EndTime})">非成本項目報表</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("C", "Reports")">管報需求</a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+
+                if (!@ViewBag.LoginUser.AuthOptions.AuthOption_Admin)
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "WorkLogs")"><i class="fa fa-edit fa-fw"></i>&nbsp;&nbsp;工時管理</a>
+                    </li>
+                }
+                <li>
+                    <a href="@Url.Action("ResetPassword", "Account")"><i class="fa fa-gear fa-fw"></i>&nbsp;&nbsp;修改密碼</a>
+                </li>
+            }
+            @*<li>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="flot.html">Flot Charts</a>
+                        </li>
+                        <li>
+                            <a href="morris.html">Morris.js Charts</a>
+                        </li>
+                    </ul>
+                </li>*@
+        </ul>
+
+
+
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
+<!-- /.navbar-static-side -->

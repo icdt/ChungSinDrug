@@ -85,10 +85,30 @@ namespace <#=projectName#>.Models
             //更新資料庫
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
+				foreach (<#=modelName#> item in <#=modelVariable#>s)
+                {
+				   <#foreach(var domainModel in domainModels)
+					 {
+					   if (modelName.Equals(domainModel.Name))
+					   {
+					   #>
+						  <#foreach(var property in FindProperties(domainModel.Members))
+						 {
+							bool isStartOfDay = icdtFramework.CustomViewTemplate.T4Helpers.T4IsStartOfDay(domainModel.Name, property.Name);
+							bool isEndOfDay = icdtFramework.CustomViewTemplate.T4Helpers.T4IsEndOfDay(domainModel.Name, property.Name);
+							if(isStartOfDay){ 
+						 #>
+								item.<#=property.Name#> = DateTimeHelper.StartOfDay(item.<#=property.Name#>);
+							<# }else if(isEndOfDay){ #>
+								item.<#=property.Name#> = DateTimeHelper.EndOfDay(item.<#=property.Name#>);
+							<# }#>
+						<#}#>
+				     <#}#>
+				   <#}#>
+                }
                 db.<#=modelDbSetName#>.AddRange(<#=modelVariable#>s);
                 db.SaveChanges();
             }
-
         }
 
         //更新一筆記錄

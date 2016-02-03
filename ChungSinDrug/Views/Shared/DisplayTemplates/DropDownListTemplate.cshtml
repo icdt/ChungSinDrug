@@ -4,10 +4,9 @@
     var formattedmodelvalue = ViewData.TemplateInfo.FormattedModelValue;
     var group = Html.GetUIHintParametersValue<string>("DropDownListName");
     string name = DropDownListHelper.GetName(group, formattedmodelvalue.ToString());
-
 }
 
 @if (!string.IsNullOrEmpty(formattedmodelvalue.ToString()))
 {
-    @Html.Display(name)
+    @Html.Raw(name)
 }

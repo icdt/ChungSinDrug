@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ChungSinDrug
+namespace icdtFramework.Configs
 {
     public class BundleConfig
     {

@@ -84,19 +84,25 @@ namespace <#= Namespace #>
             int currentPage = page < 1 ? 1 : page;
             var itemList = <#= ModelTypeName #>Manager.GetPagedList(page, pageSize);
             var itemModelList = itemList.ToMappedPagedList<<#= ModelTypeName #>, <#= ModelTypeName #>Model>();
-            return View(itemModelList);
+            return View("~/Views/Admin/<#= ModelTypeName #>/Index.cshtml",itemModelList);
         } 
 
         public ActionResult Create()
         {
 		    var newItem = new <#= ModelTypeName #>Model();
-            return View(newItem);
+            return View("~/Views/Admin/<#= ModelTypeName #>/Create.cshtml", newItem);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(<#= ModelTypeName #>Model <#= ModelVariable #>Model)
         {
+			//if (newsModel.News_StartTime >= newsModel.News_EndTime)
+            //{
+            //    ModelState.AddModelError(String.Empty, "結束時間不得小於開始時間");
+            //    return View(newsModel);
+            //}
+
             if (ModelState.IsValid)
             {
 				try
@@ -111,7 +117,7 @@ namespace <#= Namespace #>
 				}
 			}
 
-            return View(<#= ModelVariable #>Model);
+            return View("~/Views/Admin/<#= ModelTypeName #>/Create.cshtml", <#= ModelVariable #>Model);
         }
 
         public ActionResult Edit(<#= primaryKeyNullableTypeName #> id)
@@ -124,13 +130,19 @@ namespace <#= Namespace #>
             }
 			var theItemModel = this.DomainToModel(theItem);
            
-            return View(theItemModel);
+            return View("~/Views/Admin/<#= ModelTypeName #>/Edit.cshtml", theItemModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(<#= ModelTypeName #>Model <#= ModelVariable #>Model)
         {
+			//if (newsModel.News_StartTime >= newsModel.News_EndTime)
+            //{
+            //    ModelState.AddModelError(String.Empty, "結束時間不得小於開始時間");
+            //    return View(newsModel);
+            //}
+
             if (ModelState.IsValid)
             {
 				try
@@ -144,7 +156,7 @@ namespace <#= Namespace #>
 					TempData["SaveOk"] = false;
 				}
 		    }
-            return View(<#= ModelVariable #>Model);
+            return View("~/Views/Admin/<#= ModelTypeName #>/Edit.cshtml",<#= ModelVariable #>Model);
         }
 
         [HttpPost, ActionName("Delete")]

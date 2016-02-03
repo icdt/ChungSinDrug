@@ -217,15 +217,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="T4GenerateManager.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4GenerateManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\admin\DashboardController.cs" />
     <Compile Include="Controllers\zicdtFramework\ImageUploadController.cs" />
-    <Compile Include="Controllers\website\HomeController.cs" />
+    <Compile Include="Controllers\website\WebsiteController.cs" />
     <Compile Include="Controllers\zicdtFramework\UploadFilesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -262,11 +268,6 @@
     <Compile Include="icdtFramework\Plugins\ckeditor\LinkBrowser.aspx.designer.cs">
       <DependentUpon>LinkBrowser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="icdtFramework\T4\GenerateManager.cs">
-      <DependentUpon>GenerateManager.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Migrations\201601290716167_InitialDB.cs" />
     <Compile Include="Migrations\201601290716167_InitialDB.Designer.cs">
       <DependentUpon>201601290716167_InitialDB.cs</DependentUpon>
@@ -284,6 +285,7 @@
     <Compile Include="Models\ApplicationUser\ApplicationUser.cs" />
     <Compile Include="Models\DbSeed.cs" />
     <Compile Include="Models\News\News.cs" />
+    <Compile Include="Models\News\NewsManager.cs" />
     <Compile Include="Models\News\NewsModel.cs" />
     <Compile Include="Models\SystemPara\SystemPara.cs" />
     <Compile Include="Models\SystemPara\SystemParaManager.cs" />
@@ -291,8 +293,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\ChungSinDrug.dll" />
-    <Content Include="bin\ChungSinDrug.pdb" />
     <Content Include="CodeTemplates\AssemblyVersions.xml" />
     <Content Include="CodeTemplates\PackageVersions5.0.0.xml" />
     <Content Include="CodeTemplates\PackageVersions5.1.0.xml" />
@@ -307,7 +307,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -518,13 +517,9 @@
     <Content Include="icdtFramework\Plugins\uploadify\img\uploadify-cancel.png" />
     <Content Include="icdtFramework\Plugins\uploadify\uploadify.css" />
     <Content Include="icdtFramework\Plugins\uploadify\uploadify.swf" />
-    <Content Include="GenerateManager.tt">
+    <Content Include="T4GenerateManager.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateManager.cs</LastGenOutput>
-    </Content>
-    <Content Include="icdtFramework\T4\GenerateManager.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GenerateManager.cs</LastGenOutput>
+      <LastGenOutput>T4GenerateManager.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -573,9 +568,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Website\About.cshtml" />
+    <Content Include="Views\Website\Contact.cshtml" />
+    <Content Include="Views\Website\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
@@ -587,6 +582,11 @@
     <Content Include="Views\Shared\EditorTemplates\DropDownListTemplate.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DropDownListTemplate.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ShowCH.cshtml" />
+    <Content Include="Views\Admin\_adminLayout.cshtml" />
+    <Content Include="Views\Admin\_ViewStart.cshtml" />
+    <Content Include="Views\Admin\Dashboard\Index.cshtml" />
+    <Content Include="Views\Admin\_Navbar.cshtml" />
+    <Content Include="Views\Admin\_LoginStatusTopRight.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Themes\" />
@@ -603,13 +603,9 @@
     <Folder Include="CodeTemplates\ODataControllerWithActions\" />
     <Folder Include="CodeTemplates\ODataControllerWithContext\" />
     <Folder Include="Controllers\api\" />
-    <Folder Include="Controllers\backend\" />
     <Folder Include="icdtFramework\Plugins\datepicker\images\" />
     <Folder Include="icdtFramework\Plugins\datepicker\uitimepicker\" />
     <Folder Include="Uploads\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601290716167_InitialDB.resx">

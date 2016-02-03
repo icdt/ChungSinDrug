@@ -1,6 +1,8 @@
-﻿using icdtFramework.Helpers;
+﻿using ChungSinDrug;
+using icdtFramework.Configs;
+using icdtFramework.Helpers;
 using icdtFramework.Mvc;
-using LightSystem;
+using icdtFramwork.Configs;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +13,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace ChungSinDrug
+namespace icdtFramework
 {
     public class MvcApplication : System.Web.HttpApplication
     {

@@ -106,11 +106,11 @@ if (pkName != null) {
 #>
         <td>
             @Html.ActionLink("編輯", "Edit", new { id=item.<#= pkName #> }, new { @class = "k-button" })&nbsp;
-			@using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm", style = "display: inline-block;" }))
+			 @using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm_"+ @item.<#= pkName #>, style = "display: inline-block;" }))
              {
                 @Html.Hidden("id", item.<#= pkName #>)
                 @Html.AntiForgeryToken()
-                <button class="k-button delete" onclick="ccheck()">刪除</button>
+               <input type="button" class="k-button delete" onclick="removeItem('@item.<#= pkName #>')" value="刪除">
              }
         </td>
 <#
@@ -118,11 +118,11 @@ if (pkName != null) {
 #>
         <td>
              @Html.ActionLink("編輯", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "k-button" }) /
-			 @using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm", style = "display: inline-block;" }))
+			 @using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm_"+ @item.<#= pkName #>, style = "display: inline-block;" }))
              {
-                @Html.Hidden("id", "")
+                @Html.Hidden("id", item.<#= pkName #>)
                 @Html.AntiForgeryToken()
-                <button class="k-button delete" onclick="ccheck()">刪除</button>
+               <input type="button" class="k-button delete" onclick="removeItem('@item.<#= pkName #>')" value="刪除">
              }
         </td>
 <#
@@ -148,9 +148,9 @@ if (pkName != null) {
 @section Scripts{
 
  <script> 
-     function ccheck() {
+     function removeItem(a) {
             if (confirm("確定刪除?")) {
-                $("#targetForm").submit();
+                $("#targetForm_"+a).submit();
             }
             else {
                 return;

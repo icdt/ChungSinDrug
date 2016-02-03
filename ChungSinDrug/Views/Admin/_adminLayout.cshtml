@@ -1,0 +1,27 @@
+﻿<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; border-color: white; box-shadow:none;">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">管理後台</a>
+        </div>
+        <!-- /.navbar-header -->
+        <ul class="nav navbar-top-links navbar-right">
+            @Html.Partial("_LoginPartial")
+        </ul>
+        <!-- /.navbar-top-links -->
+        <!-- 左邊功能列 -->
+        @Html.Action("_Navbar", "Home")
+        <!-- /.左邊功能列 -->
+    </nav>
+    <div id="page-wrapper">
+        @RenderBody()
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
