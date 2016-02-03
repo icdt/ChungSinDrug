@@ -50,10 +50,10 @@ table {
         margin: 0;
     }
 
-        table.list .list_content table {
-            width: 100%;
-            font-size: 12px;
-        }
+    table.list .list_content table {
+        width: 100%;
+        font-size: 12px;
+    }
 
 td {
     vertical-align: middle;
@@ -193,4 +193,22 @@ input[type=checkbox] {
     padding: 3px 10px !important;
     text-decoration: none !important;
     font-size: 13px !important;
+}
+
+    .k-button.delete {
+        color: #fff;
+        background-image: none,linear-gradient(to bottom,#fe5151 0,#ff0000 100%);
+    }
+
+        .k-button.delete:hover, .k-button.delete:focus {
+            color: #fff;
+            border-color: #bf0c0c;
+            background: #bf0c0c;
+        }
+
+select.form-control {
+    padding: 3px 8px;
+    height: 28px;
+    max-width: 150px;
+    font-size: 12px;
 }

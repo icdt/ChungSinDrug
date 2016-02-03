@@ -45,9 +45,11 @@ namespace ChungSinDrug.Models
         public string News_Tag { get; set; }
 
         [Display(Name = "是否發布")]
+        [UIHint("ShowCH", null, "Type", "發布")]
         public bool News_IsPublish { get; set; }
 
         [Display(Name = "是否置頂")]
+        [UIHint("ShowCH", null, "Type", "置頂")]
         public bool News_IsTop { get; set; }
 
         [Display(Name = "建立時間")]

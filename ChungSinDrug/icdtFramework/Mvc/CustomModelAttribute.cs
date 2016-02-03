@@ -6,26 +6,26 @@ using System.Web;
 namespace icdtFramework.CustomViewTemplate
 {
     [AttributeUsage(AttributeTargets.Property)]
-    public class NotListShowAttribute : Attribute
+    public class T4NotListShowAttribute : Attribute
     {
-        public NotListShowAttribute() { }
+        public T4NotListShowAttribute() { }
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class NotFormShowAttribute : Attribute
+    public class T4NotFormShowAttribute : Attribute
     {
-        public NotFormShowAttribute() { }
+        public T4NotFormShowAttribute() { }
     }
 
     [AttributeUsage(AttributeTargets.Property)]
-    public class NotEditableAttribute : Attribute
+    public class T4NotEditableAttribute : Attribute
     {
-        public NotEditableAttribute() { }
+        public T4NotEditableAttribute() { }
     }
 
     public static class T4Helpers
     {
-        public static bool NotListShow(string viewDataTypeName, string propertyName)
+        public static bool T4NotListShow(string viewDataTypeName, string propertyName)
         {
             bool isRichText = false;
             Attribute richText = null;
@@ -33,14 +33,14 @@ namespace icdtFramework.CustomViewTemplate
 
             if (typeModel != null)
             {
-                richText = (NotListShowAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(NotListShowAttribute));
+                richText = (T4NotListShowAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(T4NotListShowAttribute));
                 return richText != null;
             }
 
             return isRichText;
         }
 
-        public static bool NotFormShow(string viewDataTypeName, string propertyName)
+        public static bool T4NotFormShow(string viewDataTypeName, string propertyName)
         {
             bool isRichText = false;
             Attribute richText = null;
@@ -48,14 +48,14 @@ namespace icdtFramework.CustomViewTemplate
 
             if (typeModel != null)
             {
-                richText = (NotFormShowAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(NotFormShowAttribute));
+                richText = (T4NotFormShowAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(T4NotFormShowAttribute));
                 return richText != null;
             }
 
             return isRichText;
         }
 
-        public static bool NotEditable(string viewDataTypeName, string propertyName)
+        public static bool T4NotEditable(string viewDataTypeName, string propertyName)
         {
             bool isRichText = false;
             Attribute richText = null;
@@ -63,7 +63,7 @@ namespace icdtFramework.CustomViewTemplate
 
             if (typeModel != null)
             {
-                richText = (NotEditableAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(NotEditableAttribute));
+                richText = (T4NotEditableAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(T4NotEditableAttribute));
                 return richText != null;
             }
 

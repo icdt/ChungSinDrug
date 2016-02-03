@@ -12,20 +12,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <table class="form" border="0" align="center" cellpadding="0" cellspacing="0">
-	         <tr>
-		 <td class="View_1_1_1">
-            @Html.DisplayNameFor(model => model.News_Id)：
-          </td>
-          <td class="View_1_2">
-                @Html.EditorFor(model => model.News_Id, new { htmlAttributes = new { @class = "k-textbox" } })
-                @Html.ValidationMessageFor(model => model.News_Id, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-		<tr>
-            <td colspan="2">
-                <div class="TableTR_BR"></div>
-            </td>
-        </tr>
+	         @Html.HiddenFor(model => model.News_Id)
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_Title)：
@@ -197,7 +184,7 @@
         <tr>
             <td colspan="2">
                 <div class="btn_area">
-                    <input type="submit" value="新增資料" class="k-button" />
+                    <input type="submit" value="確定儲存" class="k-button" />
                     @Html.ActionLink("回到列表", "Index", null, new { @class = "k-button" })
                 </div>
             </td>
@@ -206,9 +193,8 @@
 
 }
 
-
 @section Scripts {
-@if(TempData["SaveOk"]!=null){
+   @if(TempData["SaveOk"]!=null){
 	if((Boolean)TempData["SaveOk"]){
 		<script>
 	        alert("儲存成功")
@@ -219,7 +205,6 @@
 	      alert("儲存失敗")
 	    </script>
 	}
-}
-
+  }   
 
 }

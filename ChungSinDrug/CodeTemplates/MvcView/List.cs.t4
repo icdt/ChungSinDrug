@@ -1,7 +1,7 @@
 ﻿<#@ template language="C#" HostSpecific="True" #>
 <#@ output extension=".cshtml" #>
 <#@ include file="Imports.include.t4" #>
-<#@ assembly name="C:\Users\icdt\Desktop\chg\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
+<#@ assembly name="C:\Users\user\gitChungSinDrug\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
 @model IPagedList<#= "<" + ViewDataTypeName + "Model" + ">" #>
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
@@ -57,7 +57,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
 foreach (PropertyMetadata property in properties) {
 
-     bool notShow = icdtFramework.CustomViewTemplate.T4Helpers.NotListShow(ViewDataTypeName, property.PropertyName);
+     bool notShow = icdtFramework.CustomViewTemplate.T4Helpers.T4NotListShow(ViewDataTypeName, property.PropertyName);
 
     if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey && !notShow) {
 #>
@@ -83,7 +83,7 @@ foreach (PropertyMetadata property in properties) {
 <#
 foreach (PropertyMetadata property in properties) {
 
-    bool notShow = icdtFramework.CustomViewTemplate.T4Helpers.NotListShow(ViewDataTypeName, property.PropertyName);
+    bool notShow = icdtFramework.CustomViewTemplate.T4Helpers.T4NotListShow(ViewDataTypeName, property.PropertyName);
 
     if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey && !notShow) {
 #>
@@ -105,12 +105,12 @@ string pkName = GetPrimaryKeyName();
 if (pkName != null) {
 #>
         <td>
-            @Html.ActionLink("編輯", "Edit", new { id=item.<#= pkName #> }, new { @class = "k-button" }) /
+            @Html.ActionLink("編輯", "Edit", new { id=item.<#= pkName #> }, new { @class = "k-button" })&nbsp;
 			@using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm", style = "display: inline-block;" }))
              {
                 @Html.Hidden("id", item.<#= pkName #>)
                 @Html.AntiForgeryToken()
-                <button class="k-button" onclick="ccheck()">刪除</button>
+                <button class="k-button delete" onclick="ccheck()">刪除</button>
              }
         </td>
 <#
@@ -122,7 +122,7 @@ if (pkName != null) {
              {
                 @Html.Hidden("id", "")
                 @Html.AntiForgeryToken()
-                <button class="k-button" onclick="ccheck()">刪除</button>
+                <button class="k-button delete" onclick="ccheck()">刪除</button>
              }
         </td>
 <#

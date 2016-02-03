@@ -1,0 +1,31 @@
+﻿@{
+    var htmlfieldprefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var formattedmodelvalue = ViewData.TemplateInfo.FormattedModelValue;
+    var type = Html.GetUIHintParametersValue<string>("Type");
+}
+
+@switch (type.ToString())
+{
+    case "發布":
+        if ((bool)formattedmodelvalue)
+        {
+            <font color="">顯示網站上</font>
+        }
+        else
+        {
+            <font color="red">停止顯示</font>
+        }
+        break;
+    case "置頂":
+        if ((bool)formattedmodelvalue)
+        {
+            <font color="">置頂</font>
+        }
+        else
+        {
+            <font color="red">未置頂</font>
+        }
+        break;
+    default:
+        break;
+}

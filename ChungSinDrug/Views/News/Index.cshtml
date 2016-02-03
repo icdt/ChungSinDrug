@@ -62,12 +62,12 @@
             @Html.DisplayFor(modelItem => item.News_IsTop)
         </td>
         <td>
-            @Html.ActionLink("編輯", "Edit", new { id=item.News_Id }, new { @class = "k-button" }) /
+            @Html.ActionLink("編輯", "Edit", new { id=item.News_Id }, new { @class = "k-button" })&nbsp;
 			@using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm", style = "display: inline-block;" }))
              {
                 @Html.Hidden("id", item.News_Id)
                 @Html.AntiForgeryToken()
-                <button class="k-button" onclick="ccheck()">刪除</button>
+                <button class="k-button delete" onclick="ccheck()">刪除</button>
              }
         </td>
     </tr>

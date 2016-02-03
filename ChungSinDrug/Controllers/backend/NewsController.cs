@@ -16,7 +16,7 @@ namespace ChungSinDrug.Controllers.backend
     public class NewsController : Controller
     {
 
-		private int pageSize = 3;
+		private int pageSize = 10;
 
 		public ActionResult Index(int page=1)
         {
