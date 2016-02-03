@@ -228,6 +228,11 @@
     <Compile Include="Controllers\zicdtFramework\ImageUploadController.cs" />
     <Compile Include="Controllers\website\HomeController.cs" />
     <Compile Include="Controllers\zicdtFramework\UploadFilesController.cs" />
+    <Compile Include="GenerateManager.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GenerateManager.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
