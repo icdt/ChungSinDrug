@@ -23,13 +23,27 @@ namespace icdtFramework.CustomViewTemplate
         public T4NotEditableAttribute() { }
     }
 
+    [AttributeUsage(AttributeTargets.Property)]
+    public class T4StartOfDayAttribute : Attribute
+    {
+        public T4StartOfDayAttribute() { }
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class T4EndOfDayAttribute : Attribute
+    {
+        public T4EndOfDayAttribute() { }
+    }
+
     public static class T4Helpers
     {
+        private const string MODEL_NAME_SPACE = "ChungSinDrug.Models.";
+
         public static bool T4NotListShow(string viewDataTypeName, string propertyName)
         {
             bool isRichText = false;
             Attribute richText = null;
-            Type typeModel = Type.GetType(viewDataTypeName);
+            Type typeModel = Type.GetType(MODEL_NAME_SPACE + viewDataTypeName);
 
             if (typeModel != null)
             {
@@ -44,7 +58,7 @@ namespace icdtFramework.CustomViewTemplate
         {
             bool isRichText = false;
             Attribute richText = null;
-            Type typeModel = Type.GetType(viewDataTypeName);
+            Type typeModel = Type.GetType(MODEL_NAME_SPACE + viewDataTypeName);
 
             if (typeModel != null)
             {
@@ -59,11 +73,41 @@ namespace icdtFramework.CustomViewTemplate
         {
             bool isRichText = false;
             Attribute richText = null;
-            Type typeModel = Type.GetType(viewDataTypeName);
+            Type typeModel = Type.GetType(MODEL_NAME_SPACE + viewDataTypeName);
 
             if (typeModel != null)
             {
                 richText = (T4NotEditableAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(T4NotEditableAttribute));
+                return richText != null;
+            }
+
+            return isRichText;
+        }
+
+        public static bool T4IsStartOfDay(string viewDataTypeName, string propertyName)
+        {
+            bool isRichText = false;
+            Attribute richText = null;
+            Type typeModel = Type.GetType(MODEL_NAME_SPACE + viewDataTypeName);
+
+            if (typeModel != null)
+            {
+                richText = (T4StartOfDayAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(T4StartOfDayAttribute));
+                return richText != null;
+            }
+
+            return isRichText;
+        }
+
+        public static bool T4IsEndOfDay(string viewDataTypeName, string propertyName)
+        {
+            bool isRichText = false;
+            Attribute richText = null;
+            Type typeModel = Type.GetType(MODEL_NAME_SPACE + viewDataTypeName);
+
+            if (typeModel != null)
+            {
+                richText = (T4EndOfDayAttribute)Attribute.GetCustomAttribute(typeModel.GetProperty(propertyName), typeof(T4EndOfDayAttribute));
                 return richText != null;
             }
 

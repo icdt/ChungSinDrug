@@ -245,11 +245,6 @@
     <Compile Include="icdtFramework\Helpers\RandHelper.cs" />
     <Compile Include="icdtFramework\Mvc\UIHientHelper.cs" />
     <Compile Include="icdtFramework\Mvc\CustomModelAttribute.cs" />
-    <Compile Include="GenerateManager.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GenerateManager.tt</DependentUpon>
-    </Compile>
     <Compile Include="icdtFramework\Mvc\WebConstants.cs" />
     <Compile Include="icdtFramework\Plugins\ckeditor\code\Controls.cs" />
     <Compile Include="icdtFramework\Plugins\ckeditor\code\ImageMedia.cs" />

@@ -17,6 +17,7 @@ namespace ChungSinDrug.Models
 
         [Display(Name = "開始時間")]
         [DataType(DataType.DateTime)]
+        [T4StartOfDay]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [UIHint("DatePicker")]
         public DateTime News_StartTime { get; set; }
@@ -25,6 +26,7 @@ namespace ChungSinDrug.Models
         [DataType(DataType.DateTime)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
         [UIHint("DatePicker")]
+        [T4EndOfDay]
         public DateTime News_EndTime { get; set; }
 
         [T4NotListShow]

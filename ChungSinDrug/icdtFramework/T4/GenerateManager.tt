@@ -1,6 +1,8 @@
 <#@ template language="C#" debug="True" #>
 <#@ assembly name="EnvDte" #>
+<#@ assembly name="System" #>
 <#@ assembly name="System.Core" #>
+<#@ assembly name="C:\Kevin\VSprojects\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -10,7 +12,7 @@ string projectName = "ChungSinDrug";
 string modelName = "News";
 string modelVariable = "news";
 string modelDbSetName = "News";
-string savePath = "\\Model\\News\\NewssManager.cs";
+string savePath = "\\Models\\News\\NewssManager.cs";
 var project = GetProjectContainingFile("News.cs");
 var domainModels = GetClassesOf(project).ToList();	
 #>
@@ -18,6 +20,7 @@ using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using icdtFramework.Helpers;
 
 namespace <#=projectName#>.Models
 {
@@ -111,8 +114,17 @@ namespace <#=projectName#>.Models
 					   {
 					   #>
 						  <#foreach(var property in FindProperties(domainModel.Members))
-						 {#>
-						 item.<#=property.Name#> = theNewFromOutside.<#=property.Name#>;
+						 {
+							bool isStartOfDay = icdtFramework.CustomViewTemplate.T4Helpers.T4IsStartOfDay(domainModel.Name, property.Name);
+							bool isEndOfDay = icdtFramework.CustomViewTemplate.T4Helpers.T4IsEndOfDay(domainModel.Name, property.Name);
+							if(isStartOfDay){ 
+						 #>
+								item.<#=property.Name#> = DateTimeHelper.StartOfDay(theNewFromOutside.<#=property.Name#>);
+							<# }else if(isEndOfDay){ #>
+								item.<#=property.Name#> = DateTimeHelper.EndOfDay(theNewFromOutside.<#=property.Name#>);
+							<# }else{ #>
+								item.<#=property.Name#> = theNewFromOutside.<#=property.Name#>;
+							<#}#>
 						<#}#>
 				     <#}#>
 				   <#}#>
