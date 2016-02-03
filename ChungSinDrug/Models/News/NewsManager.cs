@@ -95,7 +95,7 @@ namespace ChungSinDrug.Models
                     item.News_Content = theNewFromOutside.News_Content;
                     item.News_IsPublish = theNewFromOutside.News_IsPublish;
                     item.News_IsTop = theNewFromOutside.News_IsTop;
-
+                    item.News_Tag = theNewFromOutside.News_Tag;
                     item.News_UpdateTime = theNewFromOutside.News_UpdateTime;
                     item.News_UpdaterId = theNewFromOutside.News_UpdaterId;
                     item.News_UpdaterUserName = theNewFromOutside.News_UpdaterUserName;

@@ -21,8 +21,8 @@ namespace icdtFramework.Mvc
                 items.Add(new SelectListItem
                 {
                     Text = item.SystemPara_Name,
-                    Value = item.SystemPara_Id.ToString(),
-                    Selected = targetSelected == item.SystemPara_Id
+                    Value = item.SystemPara_Code.ToString(),
+                    Selected = targetSelected == item.SystemPara_Code
                 });
             }
             return items;
