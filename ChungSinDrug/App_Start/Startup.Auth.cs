@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using ChungSinDrug.Models;
 using icdtFramework.Models;
+using icdtFramework;
 
 namespace ChungSinDrug
 {

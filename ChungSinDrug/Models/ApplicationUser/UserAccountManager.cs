@@ -7,7 +7,7 @@ using ChungSinDrug;
 
 namespace icdtFramework.Models
 {
-    public static class UserAccountManager
+    public static partial class UserAccountManager
     {
         public static ApplicationUser GetByName(string userName)
         {
@@ -16,7 +16,6 @@ namespace icdtFramework.Models
                 return db.Users.FirstOrDefault(a => a.UserName == userName);
             }
         }
-
 
         #region 純粹建立帳號
         public static string Create(ApplicationUserModel userModel)
@@ -58,60 +57,6 @@ namespace icdtFramework.Models
             }
         }
         #endregion
-
-        #region 員工帳號管理
-        public static string CreateEmployee(EmployeeUserModel userModel)
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-
-                ApplicationUser newUser = new ApplicationUser()
-                {
-                    UserName = userModel.UserName,
-                    Email = userModel.Email,
-                    UserProfile = new EmployeeProfile()
-                    {
-                        EmployeeProfile_Name = userModel.EmployeeProfile_Name
-                    }
-                };
-
-                var userPassword = String.IsNullOrEmpty(userModel.Password) ? "abc123" : userModel.Password;
-                var result = userManager.Create(newUser, userPassword);
-                if (result.Succeeded)
-                {
-                    return newUser.Id;
-                }
-                else
-                {
-                    return "";
-                }
-
-            }
-        }
-
-        public static void UpdateEmployee(EmployeeUserModel userModel)
-        {
-            using (ApplicationDbContext db = new ApplicationDbContext())
-            {
-                var user = db.Users.FirstOrDefault(a => a.Id == userModel.Id);
-
-                user.UserName = userModel.UserName;
-                user.Email = userModel.Email;
-                ((EmployeeProfile)user.UserProfile).EmployeeProfile_Name = userModel.EmployeeProfile_Name;
-
-                db.SaveChanges();
-            }
-        }
-        #endregion
-
-
-
-
-
-
-
-
 
         public static void UpdatePassword(ApplicationUserModel userModel)
         {

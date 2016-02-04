@@ -1,15 +1,29 @@
-﻿@using ChungSinDrug.Models
-@model ApplicationUser
+﻿@model icdtFramework.Models.LoginViewModel
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>View</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入畫面</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/admin/css")
+
+    <!--引用icdt plugins css-->
+    @Styles.Render("~/icdtFramework/plugins/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <!--引用icdt plugins js-->
+    @Scripts.Render("~/admin/theme/js")
+    @Scripts.Render("~/icdtFramework/plugins/js")
+
 </head>
 <body>
     <div class="container">
