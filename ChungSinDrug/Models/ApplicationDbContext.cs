@@ -1,4 +1,5 @@
-﻿using icdtFramework.Models;
+﻿using ChungSinDrug.Models;
+using icdtFramework.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace ChungSinDrug.Models
+namespace icdtFramework.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

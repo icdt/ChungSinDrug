@@ -10,6 +10,6 @@ namespace icdtFramework.Models
     public abstract class MemberProfile
     {
         [Key]
-        public string MemberProfile_Id { get; set; }
+        public string Profile_Id { get; set; }
     }
 }

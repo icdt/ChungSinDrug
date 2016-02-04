@@ -16,7 +16,7 @@ namespace icdtFramework.Configs
             routes.MapRoute(
                 name: "admin",
                 url: "admin/{controller}/{action}/{id}",
-                defaults: new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Admin", action = "Login", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

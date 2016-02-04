@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using icdtFramework.Helpers;
+using icdtFramework.Models;
 
 namespace ChungSinDrug.Models
 {

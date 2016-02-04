@@ -1,6 +1,7 @@
 ﻿using ChungSinDrug;
 using icdtFramework.Configs;
 using icdtFramework.Helpers;
+using icdtFramework.Models;
 using icdtFramework.Mvc;
 using System;
 using System.Collections.Generic;

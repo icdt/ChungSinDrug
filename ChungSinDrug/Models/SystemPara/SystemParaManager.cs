@@ -1,9 +1,10 @@
-﻿using System;
+﻿using icdtFramework.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ChungSinDrug.Models
+namespace icdtFramework.Models
 {
     public static class SystemParaManager
     {

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ChungSinDrug.Models
+namespace icdtFramework.Models
 {
     public class SystemPara
     {

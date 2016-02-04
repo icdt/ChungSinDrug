@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ChungSinDrug;
+using icdtFramework.Identity;
 
 namespace icdtFramework.Models
 {
@@ -23,11 +24,18 @@ namespace icdtFramework.Models
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                userManager.PasswordHasher = new AESPasswordHasher();
 
                 ApplicationUser newUser = new ApplicationUser()
                 {
                     UserName = userModel.UserName,
-                    Email = userModel.Email
+                    Email = userModel.Email,
+                    CreateTime = DateTime.Now,
+                    CreatorUserName = userModel.CreatorUserName,
+                    CreatorId = userModel.CreatorId,
+                    UpdateTime = DateTime.Now,
+                    UpdaterUserName = userModel.UpdaterUserName,
+                    UpdaterId = userModel.UpdaterId
                 };
 
                 var userPassword = String.IsNullOrEmpty(userModel.Password) ? "abc123" : userModel.Password;
@@ -52,6 +60,9 @@ namespace icdtFramework.Models
 
                 user.UserName = userModel.UserName;
                 user.Email = userModel.Email;
+                user.UpdateTime = DateTime.Now;
+                user.UpdaterUserName = userModel.UpdaterUserName;
+                user.UpdaterId = userModel.UpdaterId;
 
                 db.SaveChanges();
             }
@@ -82,7 +93,7 @@ namespace icdtFramework.Models
                     return;
                 }
 
-                authOptionInDB.AuthOption_Basic = authOption.AuthOption_Basic;
+                authOptionInDB.AuthOption_Admin = authOption.AuthOption_Admin;
                 //authOptionInDB.Taipei = authOption.Taipei;
                 //authOptionInDB.Taoyuan = authOption.Taoyuan;
                 //authOptionInDB.OrderTrucks = authOption.OrderTrucks;

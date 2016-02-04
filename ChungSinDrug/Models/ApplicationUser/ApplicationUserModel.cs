@@ -16,5 +16,15 @@ namespace icdtFramework.Models
 
         public string Email { get; set; }
 
+        public bool DelLock { get; set; }
+
+        public DateTime CreateTime { get; set; }
+        public string CreatorId { get; set; }
+        public string CreatorUserName { get; set; }
+
+        public DateTime UpdateTime { get; set; }
+        public string UpdaterId { get; set; }
+        public string UpdaterUserName { get; set; }
+
     }
 }

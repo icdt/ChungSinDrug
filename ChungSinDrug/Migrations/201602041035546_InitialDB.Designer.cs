@@ -7,13 +7,13 @@ namespace ChungSinDrug.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class UpdateNewsModel : IMigrationMetadata
+    public sealed partial class InitialDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateNewsModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201601291212336_UpdateNewsModel"; }
+            get { return "201602041035546_InitialDB"; }
         }
         
         string IMigrationMetadata.Source

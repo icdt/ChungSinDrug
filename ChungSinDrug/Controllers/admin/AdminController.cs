@@ -68,7 +68,7 @@ namespace ChungSinDrug.Controllers.admin
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("~/Views/Admin/Login.cshtml",model);
             }
 
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
@@ -80,7 +80,7 @@ namespace ChungSinDrug.Controllers.admin
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "登入嘗試失試。");
-                    return View(model);
+                    return View("~/Views/Admin/Login.cshtml",model);
             }
         }
         #endregion

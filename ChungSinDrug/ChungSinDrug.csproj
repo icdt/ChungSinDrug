@@ -226,6 +226,10 @@
     <Compile Include="icdtFramework\Filters\AjaxValidateAntiForgeryTokenAttribute.cs" />
     <Compile Include="icdtFramework\Filters\AuthOptionAuthorizeAttribute.cs" />
     <Compile Include="icdtFramework\Identity\icdtPasswordHasher.cs" />
+    <Compile Include="Migrations\201602041035546_InitialDB.cs" />
+    <Compile Include="Migrations\201602041035546_InitialDB.Designer.cs">
+      <DependentUpon>201602041035546_InitialDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationUser\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser\ApplicationUserModel.cs" />
     <Compile Include="Models\ApplicationUser\AuthOption.cs" />
@@ -234,6 +238,7 @@
     <Compile Include="Models\ApplicationUser\IMemberProfile.cs" />
     <Compile Include="Models\ApplicationUser\ManageViewModels.cs" />
     <Compile Include="Models\ApplicationUser\UserAccountManager.cs" />
+    <Compile Include="Models\DbSeed.cs" />
     <Compile Include="T4GenerateManager.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -282,22 +287,9 @@
     <Compile Include="icdtFramework\Plugins\ckeditor\LinkBrowser.aspx.designer.cs">
       <DependentUpon>LinkBrowser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201601290716167_InitialDB.cs" />
-    <Compile Include="Migrations\201601290716167_InitialDB.Designer.cs">
-      <DependentUpon>201601290716167_InitialDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601291212336_UpdateNewsModel.cs" />
-    <Compile Include="Migrations\201601291212336_UpdateNewsModel.Designer.cs">
-      <DependentUpon>201601291212336_UpdateNewsModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602020806540_addNewModel.cs" />
-    <Compile Include="Migrations\201602020806540_addNewModel.Designer.cs">
-      <DependentUpon>201602020806540_addNewModel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser\ApplicationUser.cs" />
-    <Compile Include="Models\DbSeed.cs" />
     <Compile Include="Models\News\News.cs" />
     <Compile Include="Models\News\NewsManager.cs" />
     <Compile Include="Models\News\NewsModel.cs" />
@@ -635,18 +627,12 @@
     <Folder Include="Views\AdminBase\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201601290716167_InitialDB.resx">
-      <DependentUpon>201601290716167_InitialDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601291212336_UpdateNewsModel.resx">
-      <DependentUpon>201601291212336_UpdateNewsModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602020806540_addNewModel.resx">
-      <DependentUpon>201602020806540_addNewModel.cs</DependentUpon>
-    </EmbeddedResource>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <EmbeddedResource Include="Migrations\201602041035546_InitialDB.resx">
+      <DependentUpon>201602041035546_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

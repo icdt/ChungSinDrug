@@ -12,7 +12,13 @@ namespace icdtFramework.Models
         [Key]
         public String AuthOption_Id { get; set; }
 
-        public bool AuthOption_Basic { get; set; }
+        public bool AuthOption_Admin { get; set; }
 
+
+        public AuthOption()
+        {
+            this.AuthOption_Id = Guid.NewGuid().ToString();
+            this.AuthOption_Admin = false;
+        }
     }
 }

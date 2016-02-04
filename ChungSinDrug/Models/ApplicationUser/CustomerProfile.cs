@@ -20,7 +20,7 @@ namespace icdtFramework.Models
 
     public static partial class UserAccountManager
     {
-        public static string CreateCustomer(EmployeeUserModel userModel)
+        public static string CreateCustomer(CustomerUserModel userModel)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
@@ -30,9 +30,16 @@ namespace icdtFramework.Models
                 {
                     UserName = userModel.UserName,
                     Email = userModel.Email,
-                    UserProfile = new EmployeeProfile()
+                    IdFK_AuthOptions = "",
+                    CreateTime = DateTime.Now,
+                    CreatorUserName = userModel.CreatorUserName,
+                    CreatorId = userModel.CreatorId,
+                    UpdateTime = DateTime.Now,
+                    UpdaterUserName = userModel.UpdaterUserName,
+                    UpdaterId = userModel.UpdaterId,
+                    UserProfile = new CustomerProfile()
                     {
-                        EmployeeProfile_Name = userModel.EmployeeProfile_Name
+                        CustomerProfile_Name = userModel.CustomerProfile_Name
                     }
                 };
 
@@ -50,7 +57,7 @@ namespace icdtFramework.Models
             }
         }
 
-        public static void UpdateCustomer(EmployeeUserModel userModel)
+        public static void UpdateCustomer(CustomerUserModel userModel)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
@@ -58,7 +65,11 @@ namespace icdtFramework.Models
 
                 user.UserName = userModel.UserName;
                 user.Email = userModel.Email;
-                ((EmployeeProfile)user.UserProfile).EmployeeProfile_Name = userModel.EmployeeProfile_Name;
+                ((CustomerProfile)user.UserProfile).CustomerProfile_Name = userModel.CustomerProfile_Name;
+
+                user.UpdateTime = DateTime.Now;
+                user.UpdaterUserName = userModel.UpdaterUserName;
+                user.UpdaterId = userModel.UpdaterId;
 
                 db.SaveChanges();
             }

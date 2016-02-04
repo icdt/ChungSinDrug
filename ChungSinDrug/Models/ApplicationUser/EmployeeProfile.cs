@@ -31,8 +31,15 @@ namespace icdtFramework.Models
                 {
                     UserName = userModel.UserName,
                     Email = userModel.Email,
+                    CreateTime = DateTime.Now,
+                    CreatorUserName = userModel.CreatorUserName,
+                    CreatorId = userModel.CreatorId,
+                    UpdateTime = DateTime.Now,
+                    UpdaterUserName = userModel.UpdaterUserName,
+                    UpdaterId = userModel.UpdaterId,
                     UserProfile = new EmployeeProfile()
                     {
+                        Profile_Id = Guid.NewGuid().ToString(),
                         EmployeeProfile_Name = userModel.EmployeeProfile_Name
                     }
                 };
@@ -60,6 +67,10 @@ namespace icdtFramework.Models
                 user.UserName = userModel.UserName;
                 user.Email = userModel.Email;
                 ((EmployeeProfile)user.UserProfile).EmployeeProfile_Name = userModel.EmployeeProfile_Name;
+
+                user.UpdateTime = DateTime.Now;
+                user.UpdaterUserName = userModel.UpdaterUserName;
+                user.UpdaterId = userModel.UpdaterId;
 
                 db.SaveChanges();
             }
