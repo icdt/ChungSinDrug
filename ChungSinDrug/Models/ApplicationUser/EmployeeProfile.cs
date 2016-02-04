@@ -25,7 +25,7 @@ namespace icdtFramework.Models
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                ApplicationUserManager userManager = GetUserManager();
 
                 ApplicationUser newUser = new ApplicationUser()
                 {

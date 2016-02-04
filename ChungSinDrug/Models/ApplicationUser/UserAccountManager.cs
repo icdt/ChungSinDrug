@@ -23,8 +23,7 @@ namespace icdtFramework.Models
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-                userManager.PasswordHasher = new AESPasswordHasher();
+                ApplicationUserManager userManager = GetUserManager();
 
                 ApplicationUser newUser = new ApplicationUser()
                 {
@@ -52,6 +51,8 @@ namespace icdtFramework.Models
             }
         }
 
+
+
         public static void UpdateEmployee(ApplicationUserModel userModel)
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
@@ -71,7 +72,7 @@ namespace icdtFramework.Models
 
         public static void UpdatePassword(ApplicationUserModel userModel)
         {
-            ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            ApplicationUserManager userManager = GetUserManager();
             userManager.RemovePassword(userModel.Id);
             userManager.AddPassword(userModel.Id, userModel.Password);
 
@@ -123,7 +124,12 @@ namespace icdtFramework.Models
             return;
         }
 
-
+        private static ApplicationUserManager GetUserManager()
+        {
+            ApplicationUserManager userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            userManager.PasswordHasher = new AESPasswordHasher();
+            return userManager;
+        }
 
     }
 }
