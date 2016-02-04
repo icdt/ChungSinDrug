@@ -219,6 +219,7 @@
   <ItemGroup>
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="Controllers\admin\AdminController.cs" />
+    <Compile Include="Controllers\admin\DashboardController.cs" />
     <Compile Include="Controllers\zicdtFramework\MvcBaseController.cs" />
     <Compile Include="Controllers\zicdtFramework\AccountController.cs" />
     <Compile Include="Controllers\zicdtFramework\ManageController.cs" />
@@ -244,7 +245,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\admin\DashboardController.cs" />
     <Compile Include="Controllers\zicdtFramework\ImageUploadController.cs" />
     <Compile Include="Controllers\website\WebsiteController.cs" />
     <Compile Include="Global.asax.cs">
@@ -609,6 +609,8 @@
     <Content Include="Views\Admin\_LoginStatusTopRight.cshtml" />
     <Content Include="Scripts\metisMenu.js.map" />
     <Content Include="Scripts\metisMenu.min.js.map" />
+    <Content Include="ValidateCode.ashx" />
+    <Content Include="Views\Shared\EditorTemplates\ValidateCode.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -1,18 +1,14 @@
 ﻿body {
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: auto;
-    margin-left: 0px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    background-color: White;
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft JhengHei', 'sans-serif';
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
+    body h2 {
+        margin: 10px 0;
+    }
 
 /* Table 設定 */
 table {
@@ -96,7 +92,7 @@ td {
 }
 
     .View_1_2:hover { /*置換底色代表選過*/
-        background: #ffc;
+        background: #fefed5;
         text-decoration: none;
         border-radius: 10px;
     }
@@ -197,7 +193,7 @@ input[type=checkbox] {
 
     .k-button.delete {
         color: #fff;
-        background-image: none,linear-gradient(to bottom,#fe5151 0,#ff0000 100%);
+        background-image: none,linear-gradient(to bottom,#fe5151 0,#fc1212 100%);
     }
 
         .k-button.delete:hover, .k-button.delete:focus {
@@ -207,8 +203,18 @@ input[type=checkbox] {
         }
 
 select.form-control {
+    display: inline-block;
     padding: 3px 8px;
     height: 28px;
     max-width: 150px;
     font-size: 12px;
+}
+
+#validatecode {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.validatecode {
+    max-width: 120px !important;
 }

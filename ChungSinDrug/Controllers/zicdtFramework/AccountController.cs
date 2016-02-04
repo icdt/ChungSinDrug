@@ -462,6 +462,24 @@ namespace icdtFramework.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 驗證碼輸入
+        /// </summary>
+        /// <param name="ValidateCode"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public ActionResult CheckCode(string ValidateCode)
+        {
+            if (ValidateCode.ToLower().Equals(HttpContext.Session["CheckCode"].ToString().ToLower()))
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

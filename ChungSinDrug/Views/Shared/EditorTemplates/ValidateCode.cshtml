@@ -1,0 +1,16 @@
+﻿@{
+    var htmlfieldprefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var formattedmodelvalue = ViewData.TemplateInfo.FormattedModelValue;
+}
+
+@Html.TextBox("", formattedmodelvalue, new { @class = "k-textbox validatecode" })
+<img id="validatecode" src="~/ValidateCode.ashx" />
+
+<script type="text/javascript">
+    $("#validatecode").click(function () {
+        $("#validatecode").attr("src", "/ValidateCode.ashx?t=" + (new Date()).valueOf());
+    });
+</script>
+
+
+

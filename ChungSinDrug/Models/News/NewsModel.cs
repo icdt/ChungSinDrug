@@ -70,6 +70,12 @@ namespace ChungSinDrug.Models
 
         public bool News_DelLock { get; set; }
 
+        //[Required(ErrorMessage = "您必須輸入驗證碼")]
+        //[System.Web.Mvc.Remote("CheckCode", "Account", ErrorMessage = "您所輸入的驗證碼是錯誤的喔。")]
+        //[Display(Name = "驗證碼")]
+        //[UIHint("ValidateCode")]
+        //public string ValidateCode { get; set; }
+
         public NewsModel()
         {
             this.News_Id = Guid.NewGuid().ToString();
@@ -87,6 +93,7 @@ namespace ChungSinDrug.Models
             this.News_UpdaterId = "";
             this.News_UpdaterUserName = "系統管理員";
             this.News_DelLock = false;
+            //this.ValidateCode = "";
         }
 
     }
