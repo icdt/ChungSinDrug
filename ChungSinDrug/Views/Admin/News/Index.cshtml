@@ -1,0 +1,105 @@
+﻿@model IPagedList<ChungSinDrug.Models.NewsModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/_adminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="list" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+        <td class="list_function">@Html.ActionLink("新增資料", "Create", null, new { @class = "k-button" })</td>
+    </tr>
+    <tr>
+        <td class="list_content">
+            <table border="0">
+                <tr class="View_1_7">
+        <td>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().News_Title)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().News_StartTime)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().News_EndTime)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().News_CoverImage)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().News_Tag)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().News_IsPublish)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.FirstOrDefault().News_IsTop)
+        </td>
+         <td style="width: 12%;">修改&nbsp;/&nbsp;刪除</td>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="View_1_6">
+        <td>
+            @Html.DisplayFor(modelItem => item.News_Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_StartTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_EndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_CoverImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_Tag)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_IsPublish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.News_IsTop)
+        </td>
+        <td>
+            @Html.ActionLink("編輯", "Edit", new { id=item.News_Id }, new { @class = "k-button" })&nbsp;
+			 @using (Html.BeginForm("Delete", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString(), FormMethod.Post, new { id = "targetForm_"+ @item.News_Id, style = "display: inline-block;" }))
+             {
+                @Html.Hidden("id", item.News_Id)
+                @Html.AntiForgeryToken()
+               <input type="button" class="k-button delete" onclick="removeItem('@item.News_Id')" value="刪除">
+             }
+        </td>
+    </tr>
+	<tr>
+        <td colspan="20">
+          <div class="TableTR_BR"></div>
+        </td>
+    </tr>
+}
+</table>
+</td>
+    </tr>
+    <tr>
+        <td class="list_page">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </td>
+    </tr>
+</table>
+
+@section Scripts{
+
+ <script> 
+     function removeItem(a) {
+            if (confirm("確定刪除?")) {
+                $("#targetForm_"+a).submit();
+            }
+            else {
+                return;
+            }
+        };
+ </script>
+
+
+}

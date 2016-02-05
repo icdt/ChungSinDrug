@@ -9,10 +9,11 @@ using Microsoft.Owin.Security;
 using ChungSinDrug;
 using icdtFramework.Models;
 using icdtFramework;
+using icdtFramework.Controllers;
 
 namespace ChungSinDrug.Controllers.admin
 {
-    public class AdminController : Controller
+    public class AdminController : MvcBaseController
     {
         #region private, constructor
         private ApplicationSignInManager _signInManager;
@@ -83,6 +84,23 @@ namespace ChungSinDrug.Controllers.admin
                     return View("~/Views/Admin/Login.cshtml",model);
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Login", "Admin");
+        }
+        #endregion
+
+        #region 後台側邊Navbar
+        [ChildActionOnly]
+        public ActionResult _Navbar()
+        {
+            ViewBag.LoginUser = loginUser;
+            return PartialView("~/Views/Admin/_Navbar.cshtml");
+        }
         #endregion
 
         private ActionResult RedirectToLocal(string returnUrl)
@@ -92,6 +110,14 @@ namespace ChungSinDrug.Controllers.admin
                 return Redirect(returnUrl);
             }
             return RedirectToAction("Index", "Dashboard");
+        }
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
         }
     }
 }

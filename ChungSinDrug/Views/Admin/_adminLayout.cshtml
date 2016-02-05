@@ -7,7 +7,7 @@
     <title>@ViewBag.Title - 我的 ASP.NET 應用程式</title>
 
     @Styles.Render("~/Content/css")
-    @Styles.Render("~/admin/css")
+    @Styles.Render("~/admin/theme/css")
 
     <!--引用icdt plugins css-->
     @Styles.Render("~/icdtFramework/plugins/css")
@@ -36,11 +36,11 @@
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
-                @Html.Partial("_LoginPartial")
+                @Html.Partial("~/Views/Admin/_LoginStatusTopRight.cshtml")
             </ul>
             <!-- /.navbar-top-links -->
             <!-- 左邊功能列 -->
-            @*@Html.Action("_Navbar", "Home")*@
+            @Html.Action("_Navbar", "Admin")
             <!-- /.左邊功能列 -->
         </nav>
         <div id="page-wrapper">

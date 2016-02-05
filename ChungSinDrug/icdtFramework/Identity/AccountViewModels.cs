@@ -64,6 +64,9 @@ namespace icdtFramework.Models
 
         [Display(Name = "記住我?")]
         public bool RememberMe { get; set; }
+
+        [UIHint("ValidateCode")]
+        public string ValidateCode { get; set; }
     }
 
     public class RegisterViewModel

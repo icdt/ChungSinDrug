@@ -5,16 +5,38 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ChungSinDrug;
 using icdtFramework.Identity;
+using System.Collections.Generic;
 
 namespace icdtFramework.Models
 {
     public static partial class UserAccountManager
     {
-        public static ApplicationUser GetByName(string userName)
+        private static List<ApplicationUserModel> _UserCache = new List<ApplicationUserModel>();
+
+        public static void Initialize()
         {
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                return db.Users.FirstOrDefault(a => a.UserName == userName);
+                var users = db.Users.Where(a=>a.DelLock == false).ToList();
+                foreach (var item in users)
+                {
+                    ApplicationUserModel aa = new ApplicationUserModel();
+                    aa.Id = item.Id;
+                    aa.UserName = item.UserName;
+                    aa.Email = item.Email;
+                    aa.UserProfile = item.UserProfile;
+                    aa.AuthOptions = item.AuthOptions;
+
+                    _UserCache.Add(aa);
+                }
+            }
+        }
+
+        public static ApplicationUserModel GetByName(string userName)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                return _UserCache.FirstOrDefault(a => a.UserName == userName);
             }
         }
 

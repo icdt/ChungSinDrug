@@ -10,9 +10,9 @@ namespace icdtFramework.Controllers
     [Authorize]
     public class MvcBaseController : Controller
     {
-        private ApplicationUser _loginUser = new ApplicationUser();
+        private ApplicationUserModel _loginUser = new ApplicationUserModel();
 
-        public ApplicationUser loginUser
+        public ApplicationUserModel loginUser
         {
             get
             {

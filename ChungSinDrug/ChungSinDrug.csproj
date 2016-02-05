@@ -220,6 +220,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="Controllers\admin\AdminController.cs" />
     <Compile Include="Controllers\admin\DashboardController.cs" />
+    <Compile Include="Controllers\admin\NewsController.cs" />
     <Compile Include="Controllers\zicdtFramework\MvcBaseController.cs" />
     <Compile Include="Controllers\zicdtFramework\AccountController.cs" />
     <Compile Include="Controllers\zicdtFramework\ManageController.cs" />
@@ -577,14 +578,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Website\About.cshtml" />
-    <Content Include="Views\Website\Contact.cshtml" />
     <Content Include="Views\Website\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DatePicker.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Uploadify.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\UploadifyMulti.cshtml" />
@@ -604,6 +600,13 @@
     <Content Include="ValidateCode.ashx" />
     <Content Include="Views\Shared\EditorTemplates\ValidateCode.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
+    <Content Include="Views\Admin\News\Create.cshtml" />
+    <Content Include="Views\Admin\News\Delete.cshtml" />
+    <Content Include="Views\Admin\News\Details.cshtml" />
+    <Content Include="Views\Admin\News\Edit.cshtml" />
+    <Content Include="Views\Admin\News\Index.cshtml" />
+    <Content Include="Views\Website\_Layout.cshtml" />
+    <Content Include="Views\Website\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Themes\" />
@@ -623,8 +626,6 @@
     <Folder Include="icdtFramework\Plugins\datepicker\images\" />
     <Folder Include="icdtFramework\Plugins\datepicker\uitimepicker\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\Account\" />
-    <Folder Include="Views\AdminBase\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

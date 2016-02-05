@@ -16,6 +16,10 @@ namespace icdtFramework.Models
 
         public string Email { get; set; }
 
+        public MemberProfile UserProfile { get; set; }
+
+        public AuthOption AuthOptions { get; set; }
+
         public bool DelLock { get; set; }
 
         public DateTime CreateTime { get; set; }

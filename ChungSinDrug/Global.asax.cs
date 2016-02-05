@@ -26,7 +26,11 @@ namespace icdtFramework
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            // 使用icdt建立的Data Annotation Provider
             ModelMetadataProviders.Current = new ExtendDataAnnotationsModelMetadataProvider();
+
+            // 初始化使用者快取
+            UserAccountManager.Initialize();
 
             //創建預設資料夾
             CreateDirectory();
