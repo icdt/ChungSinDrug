@@ -13,7 +13,7 @@ namespace ChungSinDrug.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201602041035546_InitialDB"; }
+            get { return "201602050419042_InitialDB"; }
         }
         
         string IMigrationMetadata.Source

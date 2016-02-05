@@ -226,18 +226,18 @@
     <Compile Include="icdtFramework\Filters\AjaxValidateAntiForgeryTokenAttribute.cs" />
     <Compile Include="icdtFramework\Filters\AuthOptionAuthorizeAttribute.cs" />
     <Compile Include="icdtFramework\Identity\icdtPasswordHasher.cs" />
-    <Compile Include="Migrations\201602041035546_InitialDB.cs" />
-    <Compile Include="Migrations\201602041035546_InitialDB.Designer.cs">
-      <DependentUpon>201602041035546_InitialDB.cs</DependentUpon>
+    <Compile Include="icdtFramework\Identity\AccountViewModels.cs" />
+    <Compile Include="icdtFramework\Identity\ApplicationUserModel.cs" />
+    <Compile Include="icdtFramework\Identity\AuthOption.cs" />
+    <Compile Include="Migrations\201602050419042_InitialDB.cs" />
+    <Compile Include="Migrations\201602050419042_InitialDB.Designer.cs">
+      <DependentUpon>201602050419042_InitialDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ApplicationUser\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationUser\ApplicationUserModel.cs" />
-    <Compile Include="Models\ApplicationUser\AuthOption.cs" />
     <Compile Include="Models\ApplicationUser\CustomerProfile.cs" />
     <Compile Include="Models\ApplicationUser\EmployeeProfile.cs" />
-    <Compile Include="Models\ApplicationUser\IMemberProfile.cs" />
-    <Compile Include="Models\ApplicationUser\ManageViewModels.cs" />
-    <Compile Include="Models\ApplicationUser\UserAccountManager.cs" />
+    <Compile Include="icdtFramework\Identity\IMemberProfile.cs" />
+    <Compile Include="icdtFramework\Identity\ManageViewModels.cs" />
+    <Compile Include="icdtFramework\Identity\UserAccountManager.cs" />
     <Compile Include="Models\DbSeed.cs" />
     <Compile Include="T4GenerateManager.cs">
       <AutoGen>True</AutoGen>
@@ -289,7 +289,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\ApplicationUser\ApplicationUser.cs" />
+    <Compile Include="icdtFramework\Identity\ApplicationUser.cs" />
     <Compile Include="Models\News\News.cs" />
     <Compile Include="Models\News\NewsManager.cs" />
     <Compile Include="Models\News\NewsModel.cs" />
@@ -630,8 +630,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602041035546_InitialDB.resx">
-      <DependentUpon>201602041035546_InitialDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602050419042_InitialDB.resx">
+      <DependentUpon>201602050419042_InitialDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

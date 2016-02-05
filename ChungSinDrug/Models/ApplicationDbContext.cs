@@ -12,6 +12,7 @@ namespace icdtFramework.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         #region database table
+        public DbSet<MemberProfile> MemberProfiles { get; set; }
         public DbSet<AuthOption> AuthOptions { get; set; }
         public DbSet<SystemPara> SystemParas { get; set; }
 

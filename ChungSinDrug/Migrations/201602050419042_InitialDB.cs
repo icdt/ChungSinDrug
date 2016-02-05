@@ -17,6 +17,17 @@ namespace ChungSinDrug.Migrations
                 .PrimaryKey(t => t.AuthOption_Id);
             
             CreateTable(
+                "dbo.MemberProfiles",
+                c => new
+                    {
+                        Profile_Id = c.String(nullable: false, maxLength: 128),
+                        CustomerProfile_Name = c.String(),
+                        EmployeeProfile_Name = c.String(),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Profile_Id);
+            
+            CreateTable(
                 "dbo.News",
                 c => new
                     {
@@ -140,17 +151,6 @@ namespace ChungSinDrug.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
-            CreateTable(
-                "dbo.MemberProfiles",
-                c => new
-                    {
-                        Profile_Id = c.String(nullable: false, maxLength: 128),
-                        CustomerProfile_Name = c.String(),
-                        EmployeeProfile_Name = c.String(),
-                        Discriminator = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => t.Profile_Id);
-            
         }
         
         public override void Down()
@@ -169,7 +169,6 @@ namespace ChungSinDrug.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropTable("dbo.MemberProfiles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
@@ -177,6 +176,7 @@ namespace ChungSinDrug.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.News");
+            DropTable("dbo.MemberProfiles");
             DropTable("dbo.AuthOptions");
         }
     }
