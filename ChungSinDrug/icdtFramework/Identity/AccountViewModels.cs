@@ -65,8 +65,19 @@ namespace icdtFramework.Models
         [Display(Name = "記住我?")]
         public bool RememberMe { get; set; }
 
+        [Required(ErrorMessage = "驗證碼是必填")]
+        [Display(Name = "驗證碼")]
         [UIHint("ValidateCode")]
+        [System.Web.Mvc.Remote("CheckCode", "Account",ErrorMessage = "您所輸入的驗證碼是錯誤的喔。")]
         public string ValidateCode { get; set; }
+
+        public LoginViewModel()
+        {
+            this.UserName = "";
+            this.Password = "";
+            this.RememberMe = false;
+            this.ValidateCode = "";
+        }
     }
 
     public class RegisterViewModel

@@ -105,7 +105,6 @@ namespace icdtFramework.Models
                 {
                     UserName = userModel.UserName,
                     Email = userModel.Email,
-                    IdFK_AuthOptions = "",
                     CreateTime = DateTime.Now,
                     CreatorUserName = userModel.CreatorUserName,
                     CreatorId = creatorUserAccount == null ? "" : creatorUserAccount.Id,

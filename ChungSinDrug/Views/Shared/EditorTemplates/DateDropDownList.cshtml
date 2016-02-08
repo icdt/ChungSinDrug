@@ -1,0 +1,67 @@
+﻿@**********************************************************************************
+
+[Required]
+[DataType(DataType.Date)]
+[AgeRange(MinAge = 18, MaxAge = 65, ErrorMessage = "年齡限制為 18 ~ 65 歲.")]
+//[MinAge(18, ErrorMessage = "未滿 18 歲是不行的喔！")]
+//[MaxAge(65, ErrorMessage = "不可以超過 65 歲喔！")]
+[AdditionalMetadata("TaiwanCalendarYear", true)]
+[AdditionalMetadata("YearStart", 1912)]
+[AdditionalMetadata("YearEnd", 2015)]
+[AdditionalMetadata("YearOption", "年")]
+[AdditionalMetadata("MonthOption", "月")]
+[AdditionalMetadata("DayOption", "日")]
+public DateTime BirthDate { get; set; }
+
+**********************************************************************************@ 
+
+
+@model DateTime?
+@{
+    var value = Model.HasValue
+                    ? Model.Value.ToString("yyyy-MM-dd")
+                    : "";
+
+    var addtionalValues = ViewData.ModelMetadata.AdditionalValues;
+
+    var options = ViewData.Keys
+        .Where(item => item.StartsWith("_"))
+        .ToDictionary(
+            item => item.Substring(1),
+            item => ViewData[item]);
+}
+
+@Html.TextBox("", value, new
+{
+    @class = "form-control Date-DropDownList",
+    data_TaiwanCalendarYear = options.ContainsKey("TaiwanCalendarYear")
+        ? options["TaiwanCalendarYear"].Equals(true).ToString()
+        : addtionalValues.ContainsKey("TaiwanCalendarYear")
+            ? addtionalValues["TaiwanCalendarYear"].ToString()
+            : "False",
+    data_YearStart = options.ContainsKey("YearStart")
+        ? options["YearStart"]
+        : addtionalValues.ContainsKey("YearStart")
+            ? addtionalValues["YearStart"]
+            : DateTime.Now.AddYears(-100).Year,
+    data_YearEnd = options.ContainsKey("YearEnd")
+        ? options["YearEnd"]
+        : addtionalValues.ContainsKey("YearEnd")
+            ? addtionalValues["YearEnd"]
+            : DateTime.Now.Year,
+    data_YearOption = options.ContainsKey("YearOption")
+        ? options["YearOption"]
+        : addtionalValues.ContainsKey("YearOption")
+            ? addtionalValues["YearOption"]
+            : string.Empty,
+    data_MonthOption = options.ContainsKey("MonthOption")
+        ? options["MonthOption"]
+        : addtionalValues.ContainsKey("MonthOption")
+            ? addtionalValues["MonthOption"]
+            : string.Empty,
+    data_DayOption = options.ContainsKey("DayOption")
+        ? options["DayOption"]
+        : addtionalValues.ContainsKey("DayOption")
+            ? addtionalValues["DayOption"]
+            : string.Empty
+})

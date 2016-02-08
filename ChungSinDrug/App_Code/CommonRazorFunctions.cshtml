@@ -1,0 +1,44 @@
+﻿@*@functions
+{
+    public static string GetAntiForgeryToken()
+    {
+        string cookieToken, formToken;
+        AntiForgery.GetTokens(null, out cookieToken, out formToken);
+        return string.Concat(cookieToken, ":", formToken);
+    }
+
+
+}*@
+
+ @*http://kevintsengtw.blogspot.tw/2013/09/aspnet-mvc-csrf-ajax-antiforgerytoken.html*@
+ @*function ajaxDeleteFunc(itemId) {
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("Delete", "Departments")",
+                ajaxasync: true,
+                data: { id: itemId },
+                headers: {
+                'RequestVerificationToken': '@CommonRazorFunctions.GetAntiForgeryToken()'
+                },
+                success: function () {
+
+                // Perform redirect
+                window.location.replace("@Url.Action("Index", "Departments")");
+                },
+                error: function (data) {
+                alert(data.x);
+                }
+                });
+
+                }*@
+
+
+        @*// POST: Departments/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [AjaxValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string id)
+        {
+            var theItem = DepartmentManager.Get(id);
+            DepartmentManager.Remove(theItem);
+            return RedirectToAction("Index");
+        }*@

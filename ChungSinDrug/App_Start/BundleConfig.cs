@@ -42,8 +42,11 @@ namespace icdtFramework.Configs
             bundles.Add(new ScriptBundle("~/icdtFramework/plugins/js").Include(
                       "~/icdtFramework/Plugins/datepicker/dialogUI.js",
                       "~/icdtFramework/Plugins/datepicker/jquery.ui.datepicker-zh-TW.js",
-                      "~/icdtFramework/Plugins/uploadify/jquery.uploadify-3.1.min.js",
-                      "~/icdtFramework/Plugins/ckeditor/ckeditor.js"));
+                      "~/icdtFramework/Plugins/uploadify/jquery.uploadify-3.1.js",
+                      "~/icdtFramework/Plugins/ckeditor/ckeditor.js",
+                      "~/icdtFramework/Plugins/dateDropDownList/jquery.dateLists.dev.js",
+                      "~/icdtFramework/Plugins/dateDropDownList/implementedCode.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/icdtFramework/plugins/css").Include(
                       "~/icdtFramework/Plugins/datepicker/dislog.css",

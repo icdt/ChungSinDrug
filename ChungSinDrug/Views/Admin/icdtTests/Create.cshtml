@@ -1,0 +1,181 @@
+﻿@model ChungSinDrug.Models.icdtTestModel
+
+@{
+    ViewBag.Title = "Create";
+}
+@section header {
+@Scripts.Render("~/bundles/jqueryval")
+@if(TempData["SaveOk"] != null){
+	if((Boolean)TempData["SaveOk"]){
+		<script>
+	        alert("儲存成功")
+			window.location.href = '@Url.Action("Index", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString())';
+	    </script>
+	}else{
+	   <script>
+	      alert("儲存失敗")
+	    </script>
+	}
+}
+}
+<h2>icdtTest</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <table class="form" border="0" align="center" cellpadding="0" cellspacing="0">
+	         @Html.HiddenFor(model => model.icdtTest_Id)
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_DatePicker_StartOfDay)：
+          </td>
+          <td class="View_1_2">
+                @Html.EditorFor(model => model.icdtTest_DatePicker_StartOfDay, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.icdtTest_DatePicker_StartOfDay, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_DatePicker_EndOfDay)：
+          </td>
+          <td class="View_1_2">
+                @Html.EditorFor(model => model.icdtTest_DatePicker_EndOfDay, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.icdtTest_DatePicker_EndOfDay, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_DateDropDownList_StartOfDay)：
+          </td>
+          <td class="View_1_2">
+                @Html.EditorFor(model => model.icdtTest_DateDropDownList_StartOfDay, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.icdtTest_DateDropDownList_StartOfDay, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_DateDropDownList_EndOfDay)：
+          </td>
+          <td class="View_1_2">
+                @Html.EditorFor(model => model.icdtTest_DateDropDownList_EndOfDay, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.icdtTest_DateDropDownList_EndOfDay, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_DropDownList)：
+          </td>
+          <td class="View_1_2">
+                @Html.EditorFor(model => model.icdtTest_DropDownList, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.icdtTest_DropDownList, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_CKEditor)：
+          </td>
+          <td class="View_1_2">
+                @Html.EditorFor(model => model.icdtTest_CKEditor, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.icdtTest_CKEditor, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_Image)：
+          </td>
+          <td class="View_1_2">
+                @Html.EditorFor(model => model.icdtTest_Image, new { htmlAttributes = new { @class = "k-textbox" } })
+                @Html.ValidationMessageFor(model => model.icdtTest_Image, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_Checkbox)：
+          </td>
+          <td class="View_1_2">
+                @Html.EditorFor(model => model.icdtTest_Checkbox)
+                @Html.ValidationMessageFor(model => model.icdtTest_Checkbox, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_CreateTime)：
+          </td>
+          <td class="View_1_2">
+                @Html.DisplayFor(model => model.icdtTest_CreateTime)
+                @Html.ValidationMessageFor(model => model.icdtTest_CreateTime, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+         <tr>
+		 <td class="View_1_1_1">
+            @Html.DisplayNameFor(model => model.icdtTest_UpdateTime)：
+          </td>
+          <td class="View_1_2">
+                @Html.DisplayFor(model => model.icdtTest_UpdateTime)
+                @Html.ValidationMessageFor(model => model.icdtTest_UpdateTime, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+		<tr>
+            <td colspan="2">
+                <div class="TableTR_BR"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="btn_area">
+                    <input type="submit" value="確定儲存" class="k-button" />
+                    @Html.ActionLink("回到列表", "Index", null, new { @class = "k-button" })
+                </div>
+            </td>
+        </tr>
+    </table>
+
+}
+

@@ -46,6 +46,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using icdtFramework.Extensions;
 using icdtFramework.Helpers;
+using icdtFramework.Controllers;
 <# foreach (var namespaceName in RequiredNamespaces) { #>
 using <#= namespaceName #>;
 <# } #>
@@ -84,13 +85,13 @@ namespace <#= Namespace #>
             int currentPage = page < 1 ? 1 : page;
             var itemList = <#= ModelTypeName #>Manager.GetPagedList(page, pageSize);
             var itemModelList = itemList.ToMappedPagedList<<#= ModelTypeName #>, <#= ModelTypeName #>Model>();
-            return View("~/Views/Admin/<#= ModelTypeName #>/Index.cshtml",itemModelList);
+            return View("~/Views/Admin/<#= ModelTypeName #>s/Index.cshtml",itemModelList);
         } 
 
         public ActionResult Create()
         {
 		    var newItem = new <#= ModelTypeName #>Model();
-            return View("~/Views/Admin/<#= ModelTypeName #>/Create.cshtml", newItem);
+            return View("~/Views/Admin/<#= ModelTypeName #>s/Create.cshtml", newItem);
         }
 
         [HttpPost]
@@ -117,7 +118,7 @@ namespace <#= Namespace #>
 				}
 			}
 
-            return View("~/Views/Admin/<#= ModelTypeName #>/Create.cshtml", <#= ModelVariable #>Model);
+            return View("~/Views/Admin/<#= ModelTypeName #>s/Create.cshtml", <#= ModelVariable #>Model);
         }
 
         public ActionResult Edit(<#= primaryKeyNullableTypeName #> id)
@@ -130,7 +131,7 @@ namespace <#= Namespace #>
             }
 			var theItemModel = this.DomainToModel(theItem);
            
-            return View("~/Views/Admin/<#= ModelTypeName #>/Edit.cshtml", theItemModel);
+            return View("~/Views/Admin/<#= ModelTypeName #>s/Edit.cshtml", theItemModel);
         }
 
         [HttpPost]
@@ -156,7 +157,7 @@ namespace <#= Namespace #>
 					TempData["SaveOk"] = false;
 				}
 		    }
-            return View("~/Views/Admin/<#= ModelTypeName #>/Edit.cshtml",<#= ModelVariable #>Model);
+            return View("~/Views/Admin/<#= ModelTypeName #>s/Edit.cshtml",<#= ModelVariable #>Model);
         }
 
         [HttpPost, ActionName("Delete")]

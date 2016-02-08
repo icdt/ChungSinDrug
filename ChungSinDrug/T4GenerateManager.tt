@@ -2,18 +2,18 @@
 <#@ assembly name="EnvDte" #>
 <#@ assembly name="System" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="C:\Users\icdt\Desktop\chg\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
+<#@ assembly name="C:\Home\Desktop\VSProjects\ChungSinDrug\ChungSinDrug\bin\ChungSinDrug.dll" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ include file="T4Toolbox.tt" #>
 <#
 string projectName = "ChungSinDrug";
-string modelName = "News";
-string modelVariable = "news";
-string modelDbSetName = "News";
-string savePath = "\\Models\\News\\NewsManager.cs";
-var project = GetProjectContainingFile("News.cs");
+string modelName = "icdtTest";
+string modelVariable = "icdttest";
+string modelDbSetName = "icdtTests";
+string savePath = "\\Models\\Test\\icdtTestManager.cs";
+var project = GetProjectContainingFile("icdtTest.cs");
 var domainModels = GetClassesOf(project).ToList();	
 #>
 using PagedList;

@@ -220,6 +220,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="Controllers\admin\AdminController.cs" />
     <Compile Include="Controllers\admin\DashboardController.cs" />
+    <Compile Include="Controllers\admin\icdtTestsController.cs" />
     <Compile Include="Controllers\admin\NewsController.cs" />
     <Compile Include="Controllers\zicdtFramework\MvcBaseController.cs" />
     <Compile Include="Controllers\zicdtFramework\AccountController.cs" />
@@ -230,9 +231,16 @@
     <Compile Include="icdtFramework\Identity\AccountViewModels.cs" />
     <Compile Include="icdtFramework\Identity\ApplicationUserModel.cs" />
     <Compile Include="icdtFramework\Identity\AuthOption.cs" />
+    <Compile Include="icdtFramework\Mvc\DateDropDownList\AgeRangeAttribute.cs" />
+    <Compile Include="icdtFramework\Mvc\DateDropDownList\MaxAgeAttribute.cs" />
+    <Compile Include="icdtFramework\Mvc\DateDropDownList\MinAgeAttribute.cs" />
     <Compile Include="Migrations\201602050419042_InitialDB.cs" />
     <Compile Include="Migrations\201602050419042_InitialDB.Designer.cs">
       <DependentUpon>201602050419042_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602081347454_AddTestModel.cs" />
+    <Compile Include="Migrations\201602081347454_AddTestModel.Designer.cs">
+      <DependentUpon>201602081347454_AddTestModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\ApplicationUser\CustomerProfile.cs" />
     <Compile Include="Models\ApplicationUser\EmployeeProfile.cs" />
@@ -240,11 +248,9 @@
     <Compile Include="icdtFramework\Identity\ManageViewModels.cs" />
     <Compile Include="icdtFramework\Identity\UserAccountManager.cs" />
     <Compile Include="Models\DbSeed.cs" />
-    <Compile Include="T4GenerateManager.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>T4GenerateManager.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Test\icdtTest.cs" />
+    <Compile Include="Models\Test\icdtTestManager.cs" />
+    <Compile Include="Models\Test\icdtTestModel.cs" />
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -515,6 +521,8 @@
     <Content Include="icdtFramework\Plugins\ckeditor\skins\kama\images\sprites_ie6.png" />
     <Content Include="icdtFramework\Plugins\ckeditor\skins\kama\images\toolbar_start.gif" />
     <Content Include="icdtFramework\Plugins\ckeditor\styles.js" />
+    <Content Include="icdtFramework\Plugins\dateDropDownList\jquery.dateLists.dev.js" />
+    <Content Include="icdtFramework\Plugins\dateDropDownList\implementedCode.js" />
     <Content Include="icdtFramework\Plugins\datepicker\dialogUI.js" />
     <Content Include="icdtFramework\Plugins\datepicker\dislog.css" />
     <Content Include="icdtFramework\Plugins\datepicker\jquery.js" />
@@ -607,8 +615,17 @@
     <Content Include="Views\Admin\News\Index.cshtml" />
     <Content Include="Views\Website\_Layout.cshtml" />
     <Content Include="Views\Website\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateDropDownList.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Create.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Delete.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Details.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Edit.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Themes\" />
     <Folder Include="CodeTemplates\ApiControllerEmpty\" />
     <Folder Include="CodeTemplates\ApiControllerWithActions\" />
@@ -633,6 +650,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201602050419042_InitialDB.resx">
       <DependentUpon>201602050419042_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602081347454_AddTestModel.resx">
+      <DependentUpon>201602081347454_AddTestModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,6 +13,7 @@ using icdtFramework.Controllers;
 
 namespace ChungSinDrug.Controllers.admin
 {
+    [Authorize]
     public class AdminController : MvcBaseController
     {
         #region private, constructor
@@ -59,7 +60,8 @@ namespace ChungSinDrug.Controllers.admin
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View("~/Views/Admin/Login.cshtml");
+            LoginViewModel model = new LoginViewModel();
+            return View("~/Views/Admin/Login.cshtml", model);
         }
 
         [HttpPost]
@@ -69,7 +71,14 @@ namespace ChungSinDrug.Controllers.admin
         {
             if (!ModelState.IsValid)
             {
-                return View("~/Views/Admin/Login.cshtml",model);
+                return View("~/Views/Admin/Login.cshtml", model);
+            }
+
+            string validateCodeInSession = HttpContext.Session["CheckCode"].ToString().ToLower();
+            if (!model.ValidateCode.ToLower().Equals(validateCodeInSession))
+            {
+                ModelState.AddModelError("ValidateCode", "驗證碼錯誤");
+                return View("~/Views/Admin/Login.cshtml", model);
             }
 
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
@@ -81,7 +90,7 @@ namespace ChungSinDrug.Controllers.admin
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "登入嘗試失試。");
-                    return View("~/Views/Admin/Login.cshtml",model);
+                    return View("~/Views/Admin/Login.cshtml", model);
             }
         }
 

@@ -24,6 +24,7 @@ namespace icdtFramework.Configs
         protected override void Configure()
         {
             Mapper.CreateMap<News, NewsModel>();
+            Mapper.CreateMap<icdtTest, icdtTestModel>();
         }
     }
 
@@ -32,6 +33,7 @@ namespace icdtFramework.Configs
         protected override void Configure()
         {
             Mapper.CreateMap<NewsModel, News>();
+            Mapper.CreateMap<icdtTestModel, icdtTest>();
         }
     }
 

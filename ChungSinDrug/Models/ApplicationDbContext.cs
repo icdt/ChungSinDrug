@@ -20,7 +20,8 @@ namespace icdtFramework.Models
         public DbSet<News> News { get; set; }
 
         
-       
+        public DbSet<icdtTest> icdtTests { get; set; }
+
         #endregion
 
         public ApplicationDbContext()
