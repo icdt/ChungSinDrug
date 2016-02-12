@@ -49,8 +49,8 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -220,7 +220,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="Controllers\admin\AdminController.cs" />
     <Compile Include="Controllers\admin\DashboardController.cs" />
-    <Compile Include="Controllers\admin\icdtTestsController.cs" />
     <Compile Include="Controllers\admin\NewsController.cs" />
     <Compile Include="Controllers\zicdtFramework\MvcBaseController.cs" />
     <Compile Include="Controllers\zicdtFramework\AccountController.cs" />
@@ -608,21 +607,16 @@
     <Content Include="ValidateCode.ashx" />
     <Content Include="Views\Shared\EditorTemplates\ValidateCode.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
-    <Content Include="Views\Admin\News\Create.cshtml" />
-    <Content Include="Views\Admin\News\Delete.cshtml" />
-    <Content Include="Views\Admin\News\Details.cshtml" />
-    <Content Include="Views\Admin\News\Edit.cshtml" />
-    <Content Include="Views\Admin\News\Index.cshtml" />
     <Content Include="Views\Website\_Layout.cshtml" />
     <Content Include="Views\Website\_ViewStart.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateDropDownList.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Admin\icdtTests\Create.cshtml" />
-    <Content Include="Views\Admin\icdtTests\Delete.cshtml" />
-    <Content Include="Views\Admin\icdtTests\Details.cshtml" />
-    <Content Include="Views\Admin\icdtTests\Edit.cshtml" />
-    <Content Include="Views\Admin\icdtTests\Index.cshtml" />
+    <Content Include="Views\Admin\Newss\Create.cshtml" />
+    <Content Include="Views\Admin\Newss\Delete.cshtml" />
+    <Content Include="Views\Admin\Newss\Details.cshtml" />
+    <Content Include="Views\Admin\Newss\Edit.cshtml" />
+    <Content Include="Views\Admin\Newss\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

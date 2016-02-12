@@ -47,6 +47,7 @@ using AutoMapper;
 using icdtFramework.Extensions;
 using icdtFramework.Helpers;
 using icdtFramework.Controllers;
+using icdtFramework.Configs;
 <# foreach (var namespaceName in RequiredNamespaces) { #>
 using <#= namespaceName #>;
 <# } #>
@@ -186,7 +187,7 @@ namespace <#= Namespace #>
 		private <#= ModelTypeName #> ModelToDomain(<#= ModelTypeName #>Model viewModel)
 		{
 		    <#= ModelTypeName #> <#= ModelVariable #> = new <#= ModelTypeName #>();
-            <#= ModelVariable #> = Mapper.Map<<#= ModelTypeName #>Model, <#= ModelTypeName #>>(viewModel);
+            <#= ModelVariable #> = AutoMapperConfig.Mapper.Map<<#= ModelTypeName #>Model, <#= ModelTypeName #>>(viewModel);
 
             return <#= ModelVariable #>;
 		}
@@ -194,7 +195,7 @@ namespace <#= Namespace #>
 		private <#= ModelTypeName #>Model DomainToModel(<#= ModelTypeName #> <#= ModelVariable #>)
 		{
 		  <#= ModelTypeName #>Model viewModel = new <#= ModelTypeName #>Model();
-            viewModel = Mapper.Map<<#= ModelTypeName #>, <#= ModelTypeName #>Model>(<#= ModelVariable #>);
+            viewModel = AutoMapperConfig.Mapper.Map<<#= ModelTypeName #>, <#= ModelTypeName #>Model>(<#= ModelVariable #>);
 
             return viewModel;
 		}

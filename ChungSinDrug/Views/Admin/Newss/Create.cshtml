@@ -1,22 +1,10 @@
 ﻿@model ChungSinDrug.Models.NewsModel
 
 @{
-    ViewBag.Title = "Edit";
-    Layout = "~/Views/Admin/_adminLayout.cshtml";
+    ViewBag.Title = "Create";
 }
-@section header{
+@section header {
 @Scripts.Render("~/bundles/jqueryval")
-@if(TempData["EditItemNotFound"] !=null){
-
- if((Boolean)TempData["EditItemNotFound"]){
-    <script>
-	 alert("查無資料");
-	 window.location.href = '@Url.Action("Index", RouteTable.Routes.GetRouteData(new HttpContextWrapper(HttpContext.Current)).Values["controller"].ToString())';
-	</script>
-}
-
-
-}
 @if(TempData["SaveOk"] != null){
 	if((Boolean)TempData["SaveOk"]){
 		<script>
@@ -32,21 +20,21 @@
 }
 <h2>News</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-<table class="form" border="0" align="center" cellpadding="0" cellspacing="0">
-        @Html.HiddenFor(model => model.News_Id)
 
+    <table class="form" border="0" align="center" cellpadding="0" cellspacing="0">
+	         @Html.HiddenFor(model => model.News_Id)
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_Title)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.EditorFor(model => model.News_Title, new { htmlAttributes = new { @class = "k-textbox" } })
                 @Html.ValidationMessageFor(model => model.News_Title, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -56,11 +44,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_StartTime)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.EditorFor(model => model.News_StartTime, new { htmlAttributes = new { @class = "k-textbox" } })
                 @Html.ValidationMessageFor(model => model.News_StartTime, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -70,11 +58,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_EndTime)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.EditorFor(model => model.News_EndTime, new { htmlAttributes = new { @class = "k-textbox" } })
                 @Html.ValidationMessageFor(model => model.News_EndTime, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -84,11 +72,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_Content)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.EditorFor(model => model.News_Content, new { htmlAttributes = new { @class = "k-textbox" } })
                 @Html.ValidationMessageFor(model => model.News_Content, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -98,11 +86,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_CoverImage)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.EditorFor(model => model.News_CoverImage, new { htmlAttributes = new { @class = "k-textbox" } })
                 @Html.ValidationMessageFor(model => model.News_CoverImage, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -112,11 +100,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_Tag)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.EditorFor(model => model.News_Tag, new { htmlAttributes = new { @class = "k-textbox" } })
                 @Html.ValidationMessageFor(model => model.News_Tag, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -126,11 +114,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_IsPublish)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.EditorFor(model => model.News_IsPublish)
                 @Html.ValidationMessageFor(model => model.News_IsPublish, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -140,11 +128,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_IsTop)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.EditorFor(model => model.News_IsTop)
                 @Html.ValidationMessageFor(model => model.News_IsTop, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -154,11 +142,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_CreateTime)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.DisplayFor(model => model.News_CreateTime)
                 @Html.ValidationMessageFor(model => model.News_CreateTime, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -168,11 +156,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_CreatorUserName)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.DisplayFor(model => model.News_CreatorUserName)
                 @Html.ValidationMessageFor(model => model.News_CreatorUserName, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -182,11 +170,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_UpdateTime)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.DisplayFor(model => model.News_UpdateTime)
                 @Html.ValidationMessageFor(model => model.News_UpdateTime, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -196,11 +184,11 @@
          <tr>
 		 <td class="View_1_1_1">
             @Html.DisplayNameFor(model => model.News_UpdaterUserName)：
-             </td>
-             <td class="View_1_2">
+          </td>
+          <td class="View_1_2">
                 @Html.DisplayFor(model => model.News_UpdaterUserName)
                 @Html.ValidationMessageFor(model => model.News_UpdaterUserName, "", new { @class = "text-danger" })
-   </td>
+            </td>
         </tr>
 		<tr>
             <td colspan="2">
@@ -218,5 +206,4 @@
     </table>
 
 }
-
 

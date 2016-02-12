@@ -9,8 +9,10 @@ using System.Web.Mvc;
 using AutoMapper;
 using icdtFramework.Extensions;
 using icdtFramework.Helpers;
+using icdtFramework.Controllers;
 using ChungSinDrug.Models;
 using icdtFramework.Models;
+using icdtFramework.Configs;
 
 namespace ChungSinDrug.Controllers.admin
 {
@@ -24,13 +26,13 @@ namespace ChungSinDrug.Controllers.admin
             int currentPage = page < 1 ? 1 : page;
             var itemList = NewsManager.GetPagedList(page, pageSize);
             var itemModelList = itemList.ToMappedPagedList<News, NewsModel>();
-            return View("~/Views/Admin/News/Index.cshtml",itemModelList);
+            return View("~/Views/Admin/Newss/Index.cshtml",itemModelList);
         } 
 
         public ActionResult Create()
         {
 		    var newItem = new NewsModel();
-            return View("~/Views/Admin/News/Create.cshtml", newItem);
+            return View("~/Views/Admin/Newss/Create.cshtml", newItem);
         }
 
         [HttpPost]
@@ -57,7 +59,7 @@ namespace ChungSinDrug.Controllers.admin
 				}
 			}
 
-            return View("~/Views/Admin/News/Create.cshtml", newsModel);
+            return View("~/Views/Admin/Newss/Create.cshtml", newsModel);
         }
 
         public ActionResult Edit(string id)
@@ -70,7 +72,7 @@ namespace ChungSinDrug.Controllers.admin
             }
 			var theItemModel = this.DomainToModel(theItem);
            
-            return View("~/Views/Admin/News/Edit.cshtml", theItemModel);
+            return View("~/Views/Admin/Newss/Edit.cshtml", theItemModel);
         }
 
         [HttpPost]
@@ -96,7 +98,7 @@ namespace ChungSinDrug.Controllers.admin
 					TempData["SaveOk"] = false;
 				}
 		    }
-            return View("~/Views/Admin/News/Edit.cshtml",newsModel);
+            return View("~/Views/Admin/Newss/Edit.cshtml",newsModel);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -125,7 +127,7 @@ namespace ChungSinDrug.Controllers.admin
 		private News ModelToDomain(NewsModel viewModel)
 		{
 		    News news = new News();
-            news = Mapper.Map<NewsModel, News>(viewModel);
+            news = AutoMapperConfig.Mapper.Map<NewsModel, News>(viewModel);
 
             return news;
 		}
@@ -133,7 +135,7 @@ namespace ChungSinDrug.Controllers.admin
 		private NewsModel DomainToModel(News news)
 		{
 		  NewsModel viewModel = new NewsModel();
-            viewModel = Mapper.Map<News, NewsModel>(news);
+            viewModel = AutoMapperConfig.Mapper.Map<News, NewsModel>(news);
 
             return viewModel;
 		}

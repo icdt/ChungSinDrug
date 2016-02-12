@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using icdtFramework.Configs;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace icdtFramework.Extensions
         /// <returns></returns>
         public static IPagedList<TDestination> ToMappedPagedList<TSource, TDestination>(this IPagedList<TSource> list)
         {
-            IEnumerable<TDestination> sourceList = Mapper.Map<IEnumerable<TSource>, IEnumerable<TDestination>>(list);
+            IEnumerable<TDestination> sourceList = AutoMapperConfig.Mapper.Map<IEnumerable<TSource>, IEnumerable<TDestination>>(list);
             IPagedList<TDestination> pagedResult = new StaticPagedList<TDestination>(sourceList, list.GetMetaData());
             return pagedResult;
 

@@ -9,33 +9,49 @@ namespace icdtFramework.Configs
 {
     public class AutoMapperConfig
     {
+        public static MapperConfiguration myConfiguration;
+        public static IMapper Mapper;
+
         public static void Configure()
         {
-            Mapper.Initialize(x =>
+            myConfiguration = new MapperConfiguration(cfg =>
             {
-                x.AddProfile<DomainToModel>();
-                x.AddProfile<ModelToDomain>();
+                cfg.CreateMap<News, NewsModel>();
+                cfg.CreateMap<NewsModel, News>();
+
+                cfg.CreateMap<icdtTest, icdtTestModel>();
+                cfg.CreateMap<icdtTestModel, icdtTest>();
+
             });
+            Mapper = myConfiguration.CreateMapper();
         }
     }
 
-    public class DomainToModel : Profile
-    {
-        protected override void Configure()
-        {
-            Mapper.CreateMap<News, NewsModel>();
-            Mapper.CreateMap<icdtTest, icdtTestModel>();
-        }
-    }
+    //public class DomainToModel : Profile
+    //{
+    //    protected override void Configure()
+    //    {
+    //        var config = new MapperConfiguration(cfg => {
+    //            cfg.CreateMap<News, NewsModel>();
+    //            cfg.CreateMap<icdtTest, icdtTestModel>();
+    //        });
+    //        //Mapper.CreateMap<News, NewsModel>();
+    //        //Mapper.CreateMap<icdtTest, icdtTestModel>();
+    //    }
+    //}
 
-    public class ModelToDomain : Profile
-    {
-        protected override void Configure()
-        {
-            Mapper.CreateMap<NewsModel, News>();
-            Mapper.CreateMap<icdtTestModel, icdtTest>();
-        }
-    }
+    //public class ModelToDomain : Profile
+    //{
+    //    protected override void Configure()
+    //    {
+    //        var config = new MapperConfiguration(cfg => {
+    //            cfg.CreateMap<NewsModel, News>();
+    //            cfg.CreateMap<icdtTestModel, icdtTest>();
+    //        });
+    //        //Mapper.CreateMap<NewsModel, News>();
+    //        //Mapper.CreateMap<icdtTestModel, icdtTest>();
+    //    }
+    //}
 
 
 }
