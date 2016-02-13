@@ -167,13 +167,13 @@ namespace <#= Namespace #>
         {
 			try
 			{
-			  <#= ModelTypeName #>  <#= ModelVariable #>Item = <#= ModelTypeName #>Manager.Get(id);
-			  if(<#= ModelVariable #>Item == null)
+			  <#= ModelTypeName #>  theItem = <#= ModelTypeName #>Manager.Get(id);
+			  if(theItem == null)
 			  {
 			    TempData["DeleteOk"] = false;
 				return RedirectToAction("Index");
 			  }
-			  <#= ModelTypeName #>Manager.Remove(<#= ModelVariable #>Item);
+			  <#= ModelTypeName #>Manager.Remove(theItem);
 			  TempData["DeleteOk"] = true;
 			}
 			catch(Exception)

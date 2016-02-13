@@ -221,6 +221,7 @@
     <Compile Include="Controllers\admin\AdminController.cs" />
     <Compile Include="Controllers\admin\DashboardController.cs" />
     <Compile Include="Controllers\admin\NewsController.cs" />
+    <Compile Include="Controllers\api\NewsController.cs" />
     <Compile Include="Controllers\zicdtFramework\MvcBaseController.cs" />
     <Compile Include="Controllers\zicdtFramework\AccountController.cs" />
     <Compile Include="Controllers\zicdtFramework\ManageController.cs" />
@@ -563,6 +564,7 @@
     <Content Include="icdtFramework\Plugins\ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="icdtFramework\Plugins\ckeditor\samples\sample_posteddata.php" />
     <Content Include="icdtFramework\Plugins\ckeditor\skins\kama\readme.md" />
+    <Content Include="CodeTemplates\ApiControllerWithContext\Controller.cs.t4" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -623,7 +625,6 @@
     <Folder Include="App_Themes\" />
     <Folder Include="CodeTemplates\ApiControllerEmpty\" />
     <Folder Include="CodeTemplates\ApiControllerWithActions\" />
-    <Folder Include="CodeTemplates\ApiControllerWithContext\" />
     <Folder Include="CodeTemplates\ApiDependencyCodeGenerator\" />
     <Folder Include="CodeTemplates\MvcArea\" />
     <Folder Include="CodeTemplates\MvcControllerEmpty\" />
@@ -633,7 +634,6 @@
     <Folder Include="CodeTemplates\MvcViewWithoutModel\" />
     <Folder Include="CodeTemplates\ODataControllerWithActions\" />
     <Folder Include="CodeTemplates\ODataControllerWithContext\" />
-    <Folder Include="Controllers\api\" />
     <Folder Include="icdtFramework\Plugins\datepicker\images\" />
     <Folder Include="icdtFramework\Plugins\datepicker\uitimepicker\" />
     <Folder Include="Uploads\" />
