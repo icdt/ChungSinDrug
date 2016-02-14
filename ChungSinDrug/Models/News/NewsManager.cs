@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using icdtFramework.Helpers;
 using icdtFramework.Models;
+using Dapper;
 
 namespace ChungSinDrug.Models
 {
@@ -33,6 +34,15 @@ namespace ChungSinDrug.Models
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 return db.News.Where(a => a.News_DelLock == false).ToList();
+            }
+        }
+
+        public static List<News> GetAllByDapper()
+        {
+            using (var conn = SqlConnectionHelper.GetConnection())
+            {
+                var newss = conn.Query<News>("select * from News");
+                return newss.ToList();
             }
         }
 

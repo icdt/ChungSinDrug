@@ -23,6 +23,8 @@ namespace ChungSinDrug.Controllers.admin
 
 		public ActionResult Index(int page=1)
         {
+            var dapperList = NewsManager.GetAllByDapper();
+
             int currentPage = page < 1 ? 1 : page;
             var itemList = NewsManager.GetPagedList(page, pageSize);
             var itemModelList = itemList.ToMappedPagedList<News, NewsModel>();
