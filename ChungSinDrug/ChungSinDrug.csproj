@@ -224,6 +224,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="Controllers\admin\AdminController.cs" />
     <Compile Include="Controllers\admin\DashboardController.cs" />
+    <Compile Include="Controllers\admin\icdtTestsController.cs" />
     <Compile Include="Controllers\admin\NewsController.cs" />
     <Compile Include="Controllers\api\NewsController.cs" />
     <Compile Include="Controllers\zicdtFramework\MvcBaseController.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="Controllers\zicdtFramework\ManageController.cs" />
     <Compile Include="icdtFramework\Filters\AjaxValidateAntiForgeryTokenAttribute.cs" />
     <Compile Include="icdtFramework\Filters\AuthOptionAuthorizeAttribute.cs" />
+    <Compile Include="icdtFramework\Helpers\EmailHelper.cs" />
     <Compile Include="icdtFramework\Helpers\SqlConnectionHelper.cs" />
     <Compile Include="icdtFramework\Identity\icdtPasswordHasher.cs" />
     <Compile Include="icdtFramework\Identity\AccountViewModels.cs" />
@@ -624,6 +626,11 @@
     <Content Include="Views\Admin\Newss\Details.cshtml" />
     <Content Include="Views\Admin\Newss\Edit.cshtml" />
     <Content Include="Views\Admin\Newss\Index.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Create.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Delete.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Details.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Edit.cshtml" />
+    <Content Include="Views\Admin\icdtTests\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />

@@ -42,7 +42,7 @@ namespace icdtFramework
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
 
-            // 使用
+            // 使用自訂的 AES PasswordHasher
             manager.PasswordHasher = new AESPasswordHasher();
 
             // 設定使用者名稱的驗證邏輯
