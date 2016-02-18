@@ -86,11 +86,10 @@ namespace icdtFramework.Models
         [Display(Name = "帳號")]
         public string UserName { get; set; }
 
-
-        //[Required]
-        //[EmailAddress]
-        //[Display(Name = "電子郵件")]
-        //public string Email { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "電子郵件")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "{0} 的長度至少必須為 {2} 個字元。", MinimumLength = 6)]
@@ -102,6 +101,12 @@ namespace icdtFramework.Models
         [Display(Name = "確認密碼")]
         [Compare("Password", ErrorMessage = "密碼和確認密碼不相符。")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "驗證碼是必填")]
+        [Display(Name = "驗證碼")]
+        [UIHint("ValidateCode")]
+        [System.Web.Mvc.Remote("CheckCode", "Account", ErrorMessage = "您所輸入的驗證碼是錯誤的喔。")]
+        public string ValidateCode { get; set; }
     }
 
     public class ResetPasswordViewModel

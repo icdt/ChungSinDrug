@@ -222,11 +222,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\admin\AdminController.cs" />
     <Compile Include="Controllers\admin\DashboardController.cs" />
     <Compile Include="Controllers\admin\icdtTestsController.cs" />
-    <Compile Include="Controllers\admin\NewsController.cs" />
-    <Compile Include="Controllers\api\NewsController.cs" />
     <Compile Include="Controllers\zicdtFramework\MvcBaseController.cs" />
     <Compile Include="Controllers\zicdtFramework\AccountController.cs" />
     <Compile Include="Controllers\zicdtFramework\ManageController.cs" />
@@ -249,6 +248,10 @@
     <Compile Include="Migrations\201602081347454_AddTestModel.Designer.cs">
       <DependentUpon>201602081347454_AddTestModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602171603574_UpdateModel.cs" />
+    <Compile Include="Migrations\201602171603574_UpdateModel.Designer.cs">
+      <DependentUpon>201602171603574_UpdateModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ApplicationUser\CustomerProfile.cs" />
     <Compile Include="Models\ApplicationUser\EmployeeProfile.cs" />
     <Compile Include="icdtFramework\Identity\IMemberProfile.cs" />
@@ -262,10 +265,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\zicdtFramework\ImageUploadController.cs" />
-    <Compile Include="Controllers\website\WebsiteController.cs" />
+    <Compile Include="Controllers\website\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -304,9 +306,6 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="icdtFramework\Identity\ApplicationUser.cs" />
-    <Compile Include="Models\News\News.cs" />
-    <Compile Include="Models\News\NewsManager.cs" />
-    <Compile Include="Models\News\NewsModel.cs" />
     <Compile Include="Models\SystemPara\SystemPara.cs" />
     <Compile Include="Models\SystemPara\SystemParaManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -631,6 +630,9 @@
     <Content Include="Views\Admin\icdtTests\Details.cshtml" />
     <Content Include="Views\Admin\icdtTests\Edit.cshtml" />
     <Content Include="Views\Admin\icdtTests\Index.cshtml" />
+    <Content Include="Views\Website\Account\Register.cshtml" />
+    <Content Include="Views\Website\Account\_LocalRegister.cshtml" />
+    <Content Include="Views\Website\Account\_ExternalRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -646,6 +648,7 @@
     <Folder Include="CodeTemplates\MvcViewWithoutModel\" />
     <Folder Include="CodeTemplates\ODataControllerWithActions\" />
     <Folder Include="CodeTemplates\ODataControllerWithContext\" />
+    <Folder Include="Controllers\api\" />
     <Folder Include="icdtFramework\Plugins\datepicker\images\" />
     <Folder Include="icdtFramework\Plugins\datepicker\uitimepicker\" />
     <Folder Include="Uploads\" />
@@ -659,6 +662,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602081347454_AddTestModel.resx">
       <DependentUpon>201602081347454_AddTestModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602171603574_UpdateModel.resx">
+      <DependentUpon>201602171603574_UpdateModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

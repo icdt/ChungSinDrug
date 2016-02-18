@@ -74,13 +74,6 @@ namespace ChungSinDrug.Controllers.admin
                 return View("~/Views/Admin/Login.cshtml", model);
             }
 
-            string validateCodeInSession = HttpContext.Session["CheckCode"].ToString().ToLower();
-            if (!model.ValidateCode.ToLower().Equals(validateCodeInSession))
-            {
-                ModelState.AddModelError("ValidateCode", "驗證碼錯誤");
-                return View("~/Views/Admin/Login.cshtml", model);
-            }
-
             var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {

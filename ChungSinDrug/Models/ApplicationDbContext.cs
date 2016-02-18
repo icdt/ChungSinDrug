@@ -15,12 +15,10 @@ namespace icdtFramework.Models
         public DbSet<MemberProfile> MemberProfiles { get; set; }
         public DbSet<AuthOption> AuthOptions { get; set; }
         public DbSet<SystemPara> SystemParas { get; set; }
-
-
-        public DbSet<News> News { get; set; }
-
-        
         public DbSet<icdtTest> icdtTests { get; set; }
+
+
+
 
         #endregion
 

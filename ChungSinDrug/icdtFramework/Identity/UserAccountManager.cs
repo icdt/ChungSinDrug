@@ -40,6 +40,14 @@ namespace icdtFramework.Models
             }
         }
 
+        public static ApplicationUser GetUserIdentityByName(string userName)
+        { 
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                return db.Users.FirstOrDefault(a => a.UserName == userName);
+            }
+        }
+
         #region 純粹建立帳號
         public static string Create(ApplicationUserModel userModel)
         {

@@ -21,7 +21,7 @@ namespace icdtFramework.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -33,9 +33,9 @@ namespace icdtFramework.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -119,7 +119,7 @@ namespace icdtFramework.Controllers
             // 如果使用者輸入不正確的代碼來表示一段指定的時間，則使用者帳戶 
             // 會有一段指定的時間遭到鎖定。 
             // 您可以在 IdentityConfig 中設定帳戶鎖定設定
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -150,21 +150,39 @@ namespace icdtFramework.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName, CreateTime = DateTime.UtcNow };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                ApplicationUserModel user = new ApplicationUserModel();
+                user.Id = Guid.NewGuid().ToString();
+                user.UserName = model.UserName;
+                user.Email = model.Email;
+                user.Password = model.Password;
+
+                var userId = UserAccountManager.Create(user);
+                if (!String.IsNullOrWhiteSpace(userId))
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    AuthOption aa = new AuthOption();
+                    aa.AuthOption_Admin = true;
+
+                    using (ApplicationDbContext db = new ApplicationDbContext())
+                    {
+                        var theUser = db.Users.FirstOrDefault(a => a.Id == userId);
+                        UserAccountManager.InsertOrUpdateAuthOption(theUser, aa);
+                    }
+                }
+
+                if (!String.IsNullOrEmpty(userId))
+                {
+                    var theUser = UserAccountManager.GetUserIdentityByName(user.UserName);
+                    await SignInManager.SignInAsync(theUser, isPersistent: false, rememberBrowser: false);
+
                     // 如需如何啟用帳戶確認和密碼重設的詳細資訊，請造訪 http://go.microsoft.com/fwlink/?LinkID=320771
                     // 傳送包含此連結的電子郵件
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "確認您的帳戶", "請按一下此連結確認您的帳戶 <a href=\"" + callbackUrl + "\">這裏</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
-                AddErrors(result);
+                //AddErrors(result);
             }
 
             // 如果執行到這裡，發生某項失敗，則重新顯示表單
@@ -233,7 +251,8 @@ namespace icdtFramework.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword()
         {
-            ResetPasswordViewModel resetPasswordViewModel = new ResetPasswordViewModel() {
+            ResetPasswordViewModel resetPasswordViewModel = new ResetPasswordViewModel()
+            {
                 UserName = loginUser.UserName,
                 Password = null,
                 ConfirmPassword = null
@@ -261,7 +280,7 @@ namespace icdtFramework.Controllers
             }
 
             // 原本的
-             //var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            //var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
 
             // 刪除原本的密碼後再重新設定
             UserManager.RemovePassword(user.Id);

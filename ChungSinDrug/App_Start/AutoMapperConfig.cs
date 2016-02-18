@@ -16,9 +16,6 @@ namespace icdtFramework.Configs
         {
             myConfiguration = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<News, NewsModel>();
-                cfg.CreateMap<NewsModel, News>();
-
                 cfg.CreateMap<icdtTest, icdtTestModel>();
                 cfg.CreateMap<icdtTestModel, icdtTest>();
 
