@@ -7,7 +7,6 @@ using System.Web.Mvc;
 
 namespace icdtFramework.Controllers
 {
-    [Authorize]
     public class MvcBaseController : Controller
     {
         private ApplicationUserModel _loginUser = new ApplicationUserModel();

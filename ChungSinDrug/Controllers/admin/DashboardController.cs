@@ -9,7 +9,6 @@ namespace ChungSinDrug.Controllers.admin
 {
     public class DashboardController : MvcBaseController
     {
-        // GET: Admin
         public ActionResult Index()
         {
             return View("~/Views/Admin/Dashboard/Index.cshtml");
